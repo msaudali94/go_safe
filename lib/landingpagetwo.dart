@@ -23,7 +23,6 @@ class _LandingPageTwo extends  State<LandingPageTwo> {
             padding: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.1 ),
             color: Color(0xFF631C18).withOpacity(0.85),
 
-
             child: Column(
 
               children: [
