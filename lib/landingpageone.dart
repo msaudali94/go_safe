@@ -31,6 +31,7 @@ class _LandingPageOne extends  State<LandingPageOne> {
               SizedBox(height: MediaQuery.of(context).size.height*0.45,),
 
               Text("Protect your loved ones",
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 28.0,

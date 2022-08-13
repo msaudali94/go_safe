@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'landingpageone.dart';
+import 'landingpagetwo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LandingPageOne()
+      title:"Go Safe",
+      home: LandingPageTwo()
       );
   }
 }
