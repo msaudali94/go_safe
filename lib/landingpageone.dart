@@ -21,13 +21,15 @@ class _LandingPageOne extends  State<LandingPageOne> {
           ),        ),
         child:Container(
           padding: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.1 ),
-          color: Color(0xFF3A1772).withOpacity(0.8),
+          color: Color(0xFF3B335B).withOpacity(0.85),
 
 
           child: Column(
+
             children: [
 
               SizedBox(height: MediaQuery.of(context).size.height*0.45,),
+
               Text("Protect your loved ones",
                 style: TextStyle(
                   color: Colors.white,
@@ -36,7 +38,7 @@ class _LandingPageOne extends  State<LandingPageOne> {
                 ),
               ),
 
-              Text("Help your loved ones stay safeand give yourself peace of mindwhenever they go",
+              Text("Help your loved ones stay safe and give yourself peace of mind whenever they go",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Color(0xFFA2A0A0),
@@ -45,6 +47,16 @@ class _LandingPageOne extends  State<LandingPageOne> {
                 ),
               ),
 
+              SizedBox(height: MediaQuery.of(context).size.height*0.2,),
+
+              TextButton(onPressed: (){},
+                  child: Text("Sign in",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),)
 
 
 
