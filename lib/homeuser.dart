@@ -31,7 +31,7 @@ class _HomeUser extends  State<HomeUser> {
 
               children: [
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+                SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
         Container(
           height: 80,
@@ -67,7 +67,142 @@ class _HomeUser extends  State<HomeUser> {
                     fontWeight: FontWeight.w400,
                   ),),
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white, // Background color
+                        minimumSize: const Size(100, 100),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(35.0),
+                        )
+                      ),
+                      onPressed: () {},
+
+                      child: Icon(Icons.shield,
+                      color: Colors.deepPurpleAccent.shade100,
+                        size: 50,
+                      ),
+                    ),
+
+
+
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.white, // Background color
+                          minimumSize: const Size(100, 100),
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(35.0),
+                          )
+                      ),
+                      onPressed: () {},
+
+                      child: Icon(Icons.local_taxi,
+                        color: Colors.deepPurpleAccent.shade100,
+                        size: 50,
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+
+                    Text("Guardian List ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w400,
+                      ),),
+
+                    Text("Share Ride  ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w400,
+                      ),),
+
+                  ],
+                ),
+
+                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.white, // Background color
+                          minimumSize: const Size(100, 100),
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(35.0),
+                          )
+                      ),
+                      onPressed: () {},
+
+                      child: Icon(Icons.add_location_alt,
+                        color: Colors.deepPurpleAccent.shade100,
+                        size: 50,
+                      ),
+                    ),
+
+
+
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.white, // Background color
+                          minimumSize: const Size(100, 100),
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(35.0),
+                          )
+                      ),
+                      onPressed: () {},
+
+                      child: Icon(Icons.call,
+                        color: Colors.deepPurpleAccent.shade100,
+                        size: 50,
+                      ),
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: MediaQuery.of(context).size.height*0.01,),
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+
+                    Text("Mark Safe  ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w400,
+                      ),),
+
+                    Text("Fake Call ",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w400,
+                      ),),
+
+                  ],
+                ),
+
+
+
+
 
 
               ],
