@@ -9,6 +9,12 @@ class SignIn extends StatefulWidget{
 
 class _SignIn extends  State<SignIn> {
 
+  final List<String> items = [
+    'User',
+    'Guardian',
+
+  ];
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context){
@@ -98,7 +104,81 @@ class _SignIn extends  State<SignIn> {
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.18,),
+                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+
+                DropdownButtonHideUnderline(
+                  child: DropdownButton2(
+                    isExpanded: true,
+                    hint: Row(
+                      children:[
+                        Icon(
+                          Icons.supervisor_account_rounded,
+                         size:30,
+                          color: Colors.pink,
+
+                          ),
+
+                        Expanded(
+                          child: Text(
+                            'Role',
+                            style: TextStyle(
+                              color: Color(0xFFA2A0A0),
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    items: items
+                        .map((item) =>
+                        DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(
+                            item,
+                            style: const TextStyle(
+                              color: Color(0xFFA2A0A0),
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w400,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ))
+                        .toList(),
+                    value: selectedValue,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedValue = value as String;
+                      });
+                    },
+                    icon: const Icon(
+                      Icons.arrow_downward,
+                    ),
+                    iconSize: 28,
+                    iconEnabledColor: Color(0xFF2C141F).withOpacity(0.85),
+
+                    buttonHeight: 65,
+                    buttonWidth: 450,
+                    buttonPadding: const EdgeInsets.only(left: 14, right: 14),
+                    buttonDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+
+                      color: Colors.white,
+                    ),
+
+                    itemHeight: 40,
+                    itemPadding: const EdgeInsets.only(left: 14, right: 14),
+                    dropdownMaxHeight: 200,
+                    dropdownWidth: 300,
+                    dropdownPadding: null,
+                    dropdownDecoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                    ),
+
+                  ),
+                ),
 
                 TextButton(onPressed: (){},
                     child: Text("Forgot Password?",
