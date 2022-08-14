@@ -110,18 +110,25 @@ class _SignIn extends  State<SignIn> {
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 
-        
+
         ElevatedButton(
           style: ElevatedButton.styleFrom(
             primary: Colors.blueAccent, // Background color
+            minimumSize: const Size(400, 60),
+
+            shape: new RoundedRectangleBorder(
+              borderRadius: new BorderRadius.circular(30.0),
+            ),
           ),
           onPressed: () {},
-          child: Text(
-            'Sign in',
+
+          child: Text("Sign in",
+            textAlign: TextAlign.center,
             style: TextStyle(
-                color: Colors.white,
-                fontSize: 30.0,
-                fontWeight: FontWeight.w700,),
+              color: Colors.white,
+              fontSize: 28.0,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ),
 
