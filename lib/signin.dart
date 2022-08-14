@@ -161,7 +161,6 @@ class _SignIn extends  State<SignIn> {
                     ),
                     iconSize: 30,
                     iconEnabledColor: Color(0xFF2C141F).withOpacity(0.85),
-
                     buttonHeight: 65,
                     buttonWidth: 450,
                     buttonPadding: const EdgeInsets.only(left: 14, right: 14),
@@ -184,6 +183,8 @@ class _SignIn extends  State<SignIn> {
                   ),
                 ),
 
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+
                 TextButton(onPressed: (){},
                     child: Text("Forgot Password?",
                     style: TextStyle(
@@ -192,7 +193,7 @@ class _SignIn extends  State<SignIn> {
                       fontWeight: FontWeight.w400,
                     ),),),
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+                SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
 
         ElevatedButton(
