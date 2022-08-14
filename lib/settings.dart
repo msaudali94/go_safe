@@ -11,8 +11,7 @@ class _Settings extends  State<Settings> {
 
 
   @override
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
           height: MediaQuery.of(context).size.height,
@@ -21,16 +20,19 @@ class _Settings extends  State<Settings> {
             image: new DecorationImage(
               image: new ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
-            ),        ),
-          child:Container(
-            padding: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.1 ),
+            ),),
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
             color: Colors.black54.withOpacity(0.9),
 
             child: Column(
 
               children: [
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+                SizedBox(height: MediaQuery
+                    .of(context)
+                    .size
+                    .height * 0.1,),
 
                 Text("Settings",
                   textAlign: TextAlign.center,
@@ -41,7 +43,7 @@ class _Settings extends  State<Settings> {
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.08,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.08,),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -52,18 +54,18 @@ class _Settings extends  State<Settings> {
                       size: 30,
                     ),
 
-                    TextButton(onPressed: (){},
-                        child: Text("Account ",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.w400,
-                          ),),),
+                    TextButton(onPressed: () {},
+                      child: Text("Account ",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.w400,
+                        ),),),
                   ],
-                     ),
+                ),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
 
                 Row(
@@ -75,7 +77,7 @@ class _Settings extends  State<Settings> {
                       size: 30,
                     ),
 
-                    TextButton(onPressed: (){},
+                    TextButton(onPressed: () {},
                       child: Text("Notification ",
                         style: TextStyle(
                           color: Colors.white,
@@ -87,8 +89,7 @@ class _Settings extends  State<Settings> {
                 ),
 
 
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
 
                 Row(
@@ -100,7 +101,7 @@ class _Settings extends  State<Settings> {
                       size: 30,
                     ),
 
-                    TextButton(onPressed: (){},
+                    TextButton(onPressed: () {},
                       child: Text("Privacy and Security ",
                         style: TextStyle(
                           color: Colors.white,
@@ -112,8 +113,7 @@ class _Settings extends  State<Settings> {
                 ),
 
 
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
 
                 Row(
@@ -125,7 +125,7 @@ class _Settings extends  State<Settings> {
                       size: 30,
                     ),
 
-                    TextButton(onPressed: (){},
+                    TextButton(onPressed: () {},
                       child: Text("Help and Support ",
                         style: TextStyle(
                           color: Colors.white,
@@ -137,8 +137,7 @@ class _Settings extends  State<Settings> {
                 ),
 
 
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
 
                 Row(
@@ -150,7 +149,7 @@ class _Settings extends  State<Settings> {
                       size: 30,
                     ),
 
-                    TextButton(onPressed: (){},
+                    TextButton(onPressed: () {},
                       child: Text("About ",
                         style: TextStyle(
                           color: Colors.white,
@@ -163,8 +162,7 @@ class _Settings extends  State<Settings> {
                 ),
 
 
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
 
                 Row(
@@ -176,7 +174,7 @@ class _Settings extends  State<Settings> {
                       size: 30,
                     ),
 
-                    TextButton(onPressed: (){},
+                    TextButton(onPressed: () {},
                       child: Text("Logout ",
                         style: TextStyle(
                           color: Colors.redAccent,
@@ -187,9 +185,44 @@ class _Settings extends  State<Settings> {
                   ],
                 ),
 
+                SizedBox(height: MediaQuery.of(context).size.height * 0.06,),
+
+                Icon(Icons.arrow_back,
+                  color: Colors.white,
+                  size: 50,
+                ),
+
+                SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+
+                    IconButton(onPressed: () {},
+
+                      icon: Icon(Icons.home,
+                        color: Colors.white,
+                        size: 40,
+                      ),),
 
 
+                    IconButton(onPressed: () {},
 
+                      icon: Icon(Icons.settings,
+                        color: Colors.blueAccent,
+                        size: 40,
+                      ),),
+
+
+                    IconButton(onPressed: () {},
+
+                      icon: Icon(Icons.person_outline,
+                        color: Colors.white,
+                        size: 40,
+                      ),),
+
+                  ],
+                ),
 
 
               ],
