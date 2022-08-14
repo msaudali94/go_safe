@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 
 class SignIn extends StatefulWidget{
   @override
@@ -7,6 +8,8 @@ class SignIn extends StatefulWidget{
 }
 
 class _SignIn extends  State<SignIn> {
+
+
   @override
   Widget build(BuildContext context){
 
@@ -21,7 +24,7 @@ class _SignIn extends  State<SignIn> {
             ),        ),
           child:Container(
             padding: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.1 ),
-            color: Colors.black.withOpacity(0.85),
+            color: Colors.black.withOpacity(0.8),
 
             child: Column(
 
@@ -94,6 +97,47 @@ class _SignIn extends  State<SignIn> {
                     fillColor: Colors.white,
                   ),
                 ),
+
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+
+                TextButton(onPressed: (){},
+                    child: Text("Forgot Password?",
+                    style: TextStyle(
+                      color: Color(0xFFA2A0A0),
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w400,
+                    ),),),
+
+                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+
+        
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.blueAccent, // Background color
+          ),
+          onPressed: () {},
+          child: Text(
+            'Sign in',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 30.0,
+                fontWeight: FontWeight.w700,),
+          ),
+        ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
               ],
             ),
