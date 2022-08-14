@@ -206,7 +206,7 @@ class _HomeUser extends  State<HomeUser> {
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: Colors.deepPurpleAccent, // Background color
-                        minimumSize: const Size(90, 90),
+                        minimumSize: const Size(80, 80),
                         shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(100.0),
                         )

@@ -4,7 +4,7 @@ import 'landingpagetwo.dart';
 import 'signin.dart';
 import 'signup.dart';
 import 'homeuser.dart';
-
+import 'settings.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: HomeUser()
+      home: Settings()
       );
   }
 }
