@@ -98,13 +98,13 @@ class _SignIn extends  State<SignIn> {
                   ),
                 ),
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                SizedBox(height: MediaQuery.of(context).size.height*0.18,),
 
                 TextButton(onPressed: (){},
                     child: Text("Forgot Password?",
                     style: TextStyle(
                       color: Color(0xFFA2A0A0),
-                      fontSize: 18.0,
+                      fontSize: 17.0,
                       fontWeight: FontWeight.w400,
                     ),),),
 
@@ -132,10 +132,28 @@ class _SignIn extends  State<SignIn> {
           ),
         ),
 
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
 
+                Row( mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Dont have an account?",
+                      style: TextStyle(
+                        color: Color(0xFFA2A0A0),
+                        fontSize: 17.0,
+                        fontWeight: FontWeight.w400,
+                      ),),
 
+                    TextButton(onPressed: (){},
+                      child: Text("Create new one",
+                        style: TextStyle(
+                          color: Colors.blueAccent,
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.w400,
+                        ),),),
 
+                  ],
+                ),
 
 
 
