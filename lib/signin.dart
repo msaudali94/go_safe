@@ -62,6 +62,7 @@ class _SignIn extends  State<SignIn> {
 
                   prefixIcon: Icon(
                     Icons.email,
+                    size:30,
                     color: Color(0xFF2C141F).withOpacity(0.85),),
 
                   hintText: "Email",
@@ -92,6 +93,7 @@ class _SignIn extends  State<SignIn> {
 
                     prefixIcon: Icon(
                       Icons.lock,
+                      size:30,
                       color: Color(0xFF2C141F).withOpacity(0.85),),
 
                     hintText: "Password",
@@ -113,11 +115,13 @@ class _SignIn extends  State<SignIn> {
                       children:[
                         Icon(
                           Icons.supervisor_account_rounded,
-                         size:30,
-                          color: Colors.pink,
-
+                          size:30,
+                          color: Color(0xFF2C141F).withOpacity(0.85),
                           ),
 
+                        SizedBox(
+                          width: 9,
+                        ),
                         Expanded(
                           child: Text(
                             'Role',
@@ -155,7 +159,7 @@ class _SignIn extends  State<SignIn> {
                     icon: const Icon(
                       Icons.arrow_downward,
                     ),
-                    iconSize: 28,
+                    iconSize: 30,
                     iconEnabledColor: Color(0xFF2C141F).withOpacity(0.85),
 
                     buttonHeight: 65,
