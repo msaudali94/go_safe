@@ -49,16 +49,6 @@ class _HomeUser extends  State<HomeUser> {
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
-                Text("Hi Amanda",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-
-
 
                 Text("We are looking out for you ",
                   style: TextStyle(
@@ -201,8 +191,77 @@ class _HomeUser extends  State<HomeUser> {
                 ),
 
 
+                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+
+                Container(
+                  height: 150,
+                  width: 150,
+                  decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.white,
+                        width: 3,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(100))
+                  ),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.deepPurpleAccent, // Background color
+                        minimumSize: const Size(90, 90),
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(100.0),
+                        )
+                    ),
+                    onPressed: () {},
+
+                    child: Text("SOS",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 38.0,
+                        fontWeight: FontWeight.w400,
+                      ),
+                    )
+                  ),
+
+                ),
+
+                SizedBox(height: MediaQuery.of(context).size.height*0.06,),
 
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+
+                    IconButton(onPressed: (){},
+
+                        icon: Icon(Icons.home,
+                          color: Colors.blueAccent,
+                          size: 40,
+                        ),),
+
+
+                    IconButton(onPressed: (){},
+
+                      icon: Icon(Icons.settings,
+                        color: Colors.white,
+                        size: 40,
+                      ),),
+
+
+                    IconButton(onPressed: (){},
+
+                      icon: Icon(Icons.person_outline,
+                        color: Colors.white,
+                        size: 40,
+                      ),),
+
+
+
+
+
+
+                  ],
+                ),
 
 
               ],
