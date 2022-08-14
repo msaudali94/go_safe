@@ -38,7 +38,7 @@ class _SignUp extends  State<SignUp> {
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.1,),
 
-                Text("Sign in",
+                Text("Sign up",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -62,7 +62,7 @@ class _SignUp extends  State<SignUp> {
                       borderRadius: BorderRadius.circular(5.5),),
 
                     prefixIcon: Icon(
-                      Icons.email,
+                      Icons.person,
                       size:30,
                       color: Color(0xFF2C141F).withOpacity(0.85),),
 
