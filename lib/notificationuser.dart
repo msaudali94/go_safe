@@ -107,10 +107,12 @@ class _NotificationUser extends  State<NotificationUser> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.365,),
 
-                Icon(Icons.arrow_back,
-                  color: Colors.white,
-                  size: 50,
-                ),
+                IconButton(onPressed: (){},
+
+                  icon: Icon(Icons.arrow_back,
+                    color: Colors.white,
+                    size: 50,
+                  ),),
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
 
