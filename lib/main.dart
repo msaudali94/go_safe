@@ -7,7 +7,7 @@ import 'homeuser.dart';
 import 'settings.dart';
 import 'accountuser.dart';
 import 'notificationuser.dart';
-
+import 'profileuser.dart';
 
 
 void main() {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: NotificationUser()
+      home: ProfileUser()
       );
   }
 }
