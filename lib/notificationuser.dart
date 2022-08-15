@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-class AccountUser extends StatefulWidget{
+class NotificationUser extends StatefulWidget{
   @override
-  _AccountUser createState() => _AccountUser();
+  _NotificationUser createState() => _NotificationUser();
 }
 
-class _AccountUser extends  State<AccountUser> {
+class _NotificationUser extends  State<NotificationUser> {
 
-
+  bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,13 +46,13 @@ class _AccountUser extends  State<AccountUser> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.person_outline,
+                    Icon(Icons.notifications_none,
                       color: Colors.white,
                       size: 30,
                     ),
 
                     TextButton(onPressed: () {},
-                      child: Text("Account ",
+                      child: Text("Notifcation ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -73,84 +73,39 @@ class _AccountUser extends  State<AccountUser> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-
-
                     TextButton(onPressed: () {},
-                      child: Text("Edit Profile ",
+                      child: Text("App Notifications  ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
                           fontWeight: FontWeight.w400,
                         ),),),
 
-                  ],
-                ),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.16,),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+                    Switch(
+                      value: isSwitched,
+                      onChanged: (value) {
+                        setState(() {
+                          isSwitched = value;
+                          print(isSwitched);
+                        });
+                      },
+                      inactiveThumbColor: Color(0xFFA2A0A0),
+                      inactiveTrackColor: Colors.white.withOpacity(0.8),
 
+                      activeTrackColor: Colors.green,
+                      activeColor: Colors.greenAccent,
+                    ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-
-
-
-                    TextButton(onPressed: () {},
-                      child: Text("Change Password ",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),),),
-
-                  ],
-                ),
-
-
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-
-
-                    TextButton(onPressed: () {},
-                      child: Text("Privacy ",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),),),
-
-                  ],
-                ),
-
-
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-
-
-
-                    TextButton(onPressed: () {},
-                      child: Text("Language",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),),),
 
 
                   ],
                 ),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.12,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.365,),
 
                 Icon(Icons.arrow_back,
                   color: Colors.white,

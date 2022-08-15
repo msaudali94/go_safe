@@ -250,7 +250,7 @@ class _HomeUser extends  State<HomeUser> {
 
                     IconButton(onPressed: (){},
 
-                      icon: Icon(Icons.person_outline,
+                      icon: Icon(Icons.person,
                         color: Colors.white,
                         size: 40,
                       ),),

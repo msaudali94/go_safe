@@ -218,7 +218,7 @@ class _Settings extends  State<Settings> {
 
                     IconButton(onPressed: () {},
 
-                      icon: Icon(Icons.person_outline,
+                      icon: Icon(Icons.person,
                         color: Colors.white,
                         size: 40,
                       ),),
