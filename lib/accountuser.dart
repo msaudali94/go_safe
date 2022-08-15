@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-class Settings extends StatefulWidget{
+class AccountUser extends StatefulWidget{
   @override
-  _Settings createState() => _Settings();
+  _AccountUser createState() => _AccountUser();
 }
 
-class _Settings extends  State<Settings> {
+class _AccountUser extends  State<AccountUser> {
 
 
   @override
@@ -29,10 +29,7 @@ class _Settings extends  State<Settings> {
 
               children: [
 
-                SizedBox(height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.1,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
 
                 Text("Settings",
                   textAlign: TextAlign.center,
@@ -64,6 +61,11 @@ class _Settings extends  State<Settings> {
                   ],
                 ),
 
+                Divider(
+                  thickness:5,
+                  color: Color(0xFFA2A0A0),
+
+                ),
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
@@ -72,13 +74,10 @@ class _Settings extends  State<Settings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.notifications_none,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+
 
                     TextButton(onPressed: () {},
-                      child: Text("Notification ",
+                      child: Text("Edit Profile ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -96,13 +95,10 @@ class _Settings extends  State<Settings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.lock_outline,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+
 
                     TextButton(onPressed: () {},
-                      child: Text("Privacy and Security ",
+                      child: Text("Change Password ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -120,13 +116,9 @@ class _Settings extends  State<Settings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.headphones,
-                      color: Colors.white,
-                      size: 30,
-                    ),
 
                     TextButton(onPressed: () {},
-                      child: Text("Help and Support ",
+                      child: Text("Privacy ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -144,13 +136,10 @@ class _Settings extends  State<Settings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.help_outline,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+
 
                     TextButton(onPressed: () {},
-                      child: Text("About ",
+                      child: Text("Language",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -162,30 +151,7 @@ class _Settings extends  State<Settings> {
                 ),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-
-                    Icon(Icons.logout,
-                      color: Colors.redAccent,
-                      size: 30,
-                    ),
-
-                    TextButton(onPressed: () {},
-                      child: Text("Logout ",
-                        style: TextStyle(
-                          color: Colors.redAccent,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),),),
-
-                  ],
-                ),
-
-                SizedBox(height: MediaQuery.of(context).size.height * 0.06,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
 
                 Icon(Icons.arrow_back,
                   color: Colors.white,
@@ -196,7 +162,7 @@ class _Settings extends  State<Settings> {
 
 
 
-                 Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
 
