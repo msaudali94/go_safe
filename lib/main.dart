@@ -24,6 +24,7 @@ import 'batterystatus.dart';
 import 'ridedetails.dart';
 import 'livelocation.dart';
 import 'guardianlist.dart';
+import 'guardian.dart';
 
 
 void main() {
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: GuardianList()
+      home: Guardian()
       );
   }
 }
