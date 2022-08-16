@@ -21,8 +21,8 @@ import 'profileguardian.dart';
 import 'homeguardian.dart';
 import 'emergency.dart';
 import 'batterystatus.dart';
-
-
+import 'ridedetails.dart';
+import 'livelocation.dart';
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: SafeMark()
+      home: LiveLocation()
       );
   }
 }
