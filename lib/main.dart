@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: AccountUser()
+      home: SafeMark()
       );
   }
 }

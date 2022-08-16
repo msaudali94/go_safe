@@ -20,19 +20,160 @@ class _SafeMark extends  State<SafeMark> {
 
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
-            color: Colors.white,
+            color: Colors.black87,
 
             child: Column(
 
               children: [
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.08,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.6,),
+
+                TextFormField(
+                  textAlign: TextAlign.center,
+                  obscureText: true,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    enabledBorder:OutlineInputBorder(
+                      borderSide: BorderSide(color:Colors.transparent),
+                      borderRadius: BorderRadius.circular(5.5),),
+
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color:Colors.transparent),
+                      borderRadius: BorderRadius.circular(5.5),),
 
 
 
+                    hintText: "Search a place",
+                    hintStyle: TextStyle(
+                      color: Color(0xFFA2A0A0),
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.w400,),
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                ),
+
+                SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.08,),
+                Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+
+                    Container(
+                        height: 55,
+                        width: 55,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 3,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(120))
+                        ),
+                        child: IconButton(onPressed: (){},
+
+                          icon: Icon(Icons.cancel_outlined,
+                            color: Colors.redAccent,
+                            size: 32,
+                          ),)
+
+                    ),
+
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.greenAccent, // Background color
+                        minimumSize: const Size(150, 60),
+
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      onPressed: () {},
+
+                      child: Text("Search",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 28.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                        height: 55,
+                        width: 55,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 3,
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(120))
+                        ),
+
+                        child: IconButton(onPressed: (){},
+                          icon: Icon(Icons.check_circle_outline,
+                            color: Colors.greenAccent,
+                            size: 32,
+                          ),)
+
+                    ),
+                  ],
+                ),
+
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+
+                IconButton(onPressed: (){},
+
+                  icon: Icon(Icons.arrow_back,
+                    color: Colors.white,
+                    size: 50,
+                  ),),
+
+
+                SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    IconButton(onPressed: (){},
+
+                      icon: Icon(Icons.home,
+                        color: Colors.white,
+                        size: 40,
+                      ),),
+
+
+                    IconButton(onPressed: (){},
+
+                      icon: Icon(Icons.settings,
+                        color: Colors.white,
+                        size: 40,
+                      ),),
+
+
+                    IconButton(onPressed: (){},
+
+                      icon: Icon(Icons.person,
+                        color: Colors.white,
+                        size: 40,
+                      ),),
+
+
+                    IconButton(onPressed: (){},
+
+                      icon: Icon(Icons.location_on_sharp,
+                        color: Colors.blueAccent,
+                        size: 40,
+                      ),),
+
+                  ],
+                ),
+
+
 
 
 

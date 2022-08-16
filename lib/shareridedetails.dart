@@ -62,7 +62,7 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
 
                 TextFormField(
                   textAlign: TextAlign.center,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                     enabledBorder:OutlineInputBorder(
                       borderSide: BorderSide(color:Colors.transparent),

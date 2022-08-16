@@ -62,7 +62,7 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
 
                 TextFormField(
                   textAlign: TextAlign.center,
-                  keyboardType: TextInputType.emailAddress,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
                     enabledBorder:OutlineInputBorder(
                       borderSide: BorderSide(color:Colors.transparent),
