@@ -13,6 +13,7 @@ import 'safemark.dart';
 import 'activatedfakecall.dart';
 import 'fakecalltwo.dart';
 import 'shareridedetails.dart';
+import 'generateguardianlist.dart';
 
 
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: ShareRideDetails()
+      home: GenerateGuardianList()
       );
   }
 }
