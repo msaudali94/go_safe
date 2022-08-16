@@ -9,6 +9,8 @@ import 'accountuser.dart';
 import 'notificationuser.dart';
 import 'profileuser.dart';
 import 'sos.dart';
+import 'safemark.dart';
+import 'activatedfakecall.dart';
 
 
 void main() {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: Sos()
+      home: FakeCallOne()
       );
   }
 }
