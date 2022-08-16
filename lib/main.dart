@@ -11,6 +11,10 @@ import 'profileuser.dart';
 import 'sos.dart';
 import 'safemark.dart';
 import 'activatedfakecall.dart';
+import 'fakecalltwo.dart';
+import 'shareridedetails.dart';
+
+
 
 
 void main() {
@@ -25,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: FakeCallOne()
+      home: ShareRideDetails()
       );
   }
 }

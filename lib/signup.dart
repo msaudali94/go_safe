@@ -51,6 +51,7 @@ class _SignUp extends  State<SignUp> {
 
 
                 TextFormField(
+
                   keyboardType: TextInputType.name,
                   decoration: InputDecoration(
                     enabledBorder:OutlineInputBorder(
@@ -82,6 +83,7 @@ class _SignUp extends  State<SignUp> {
 
 
                 TextFormField(
+
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     enabledBorder:OutlineInputBorder(
@@ -112,7 +114,8 @@ class _SignUp extends  State<SignUp> {
                 SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 
                 TextFormField(
-                  obscureText: true,
+
+                    obscureText: true,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
                     enabledBorder:OutlineInputBorder(
@@ -142,7 +145,8 @@ class _SignUp extends  State<SignUp> {
 
                 DropdownButtonHideUnderline(
                   child: DropdownButton2(
-                    isExpanded: true,
+
+                      isExpanded: true,
                     hint: Row(
                       children:[
                         Icon(

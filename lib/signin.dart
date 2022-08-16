@@ -50,6 +50,7 @@ class _SignIn extends  State<SignIn> {
                 SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
               TextFormField(
+
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
                   enabledBorder:OutlineInputBorder(
@@ -80,6 +81,7 @@ class _SignIn extends  State<SignIn> {
                 SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 
                 TextFormField(
+
                   obscureText: true,
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
