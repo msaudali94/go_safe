@@ -14,8 +14,10 @@ import 'activatedfakecall.dart';
 import 'fakecalltwo.dart';
 import 'shareridedetails.dart';
 import 'generateguardianlist.dart';
-
-
+import 'settingguardian.dart';
+import 'accountguardian.dart';
+import 'notificationguardian.dart';
+import 'profileguardian.dart';
 
 
 void main() {
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: GenerateGuardianList()
+      home: ProfileGuardian()
       );
   }
 }
