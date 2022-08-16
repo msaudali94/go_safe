@@ -27,6 +27,8 @@ class _LiveLocation extends  State<LiveLocation> {
               children: [
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.62,),
+
+
         Text("Location",
           style: TextStyle(
             color: Color(0xFFA2A0A0),
@@ -48,6 +50,7 @@ class _LiveLocation extends  State<LiveLocation> {
               ),
               borderRadius: BorderRadius.all(Radius.circular(10))
           ),
+
           child:Row(mainAxisAlignment: MainAxisAlignment.start,
 
             children: [
@@ -71,6 +74,7 @@ class _LiveLocation extends  State<LiveLocation> {
 
             ],
           ),
+
         ),
 
 

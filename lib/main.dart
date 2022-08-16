@@ -23,6 +23,8 @@ import 'emergency.dart';
 import 'batterystatus.dart';
 import 'ridedetails.dart';
 import 'livelocation.dart';
+import 'guardianlist.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title:"Go Safe",
-      home: LiveLocation()
+      home: GuardianList()
       );
   }
 }
