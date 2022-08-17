@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:user_profile_avatar/user_profile_avatar.dart';
+import 'homeguardian.dart';
+import 'settingguardian.dart';
 
 class ProfileGuardian extends StatefulWidget{
   @override
@@ -311,7 +311,9 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
+                    },
 
                       icon: Icon(Icons.home,
                         color: Colors.white,
@@ -319,7 +321,9 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                    },
 
                       icon: Icon(Icons.settings,
                         color: Colors.white,

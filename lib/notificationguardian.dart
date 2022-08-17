@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'profileguardian.dart';
+import 'homeguardian.dart';
+
 
 class NotificationGuardian extends StatefulWidget{
   @override
@@ -107,7 +109,9 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.365,),
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                },
 
                   icon: Icon(Icons.arrow_back,
                     color: Colors.white,
@@ -122,7 +126,9 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
 
-                    IconButton(onPressed: () {},
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
+                    },
 
                       icon: Icon(Icons.home,
                         color: Colors.white,
@@ -138,7 +144,9 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
                       ),),
 
 
-                    IconButton(onPressed: () {},
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,

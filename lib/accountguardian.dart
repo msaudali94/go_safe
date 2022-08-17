@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'profileguardian.dart';
+import 'homeguardian.dart';
+
 
 class AccountGuardian extends StatefulWidget{
   @override
@@ -75,7 +77,9 @@ class _AccountGuardian extends  State<AccountGuardian> {
 
 
 
-                    TextButton(onPressed: () {},
+                    TextButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
+                    },
                       child: Text("Edit Profile ",
                         style: TextStyle(
                           color: Colors.white,
@@ -152,7 +156,9 @@ class _AccountGuardian extends  State<AccountGuardian> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.12,),
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                },
 
                   icon: Icon(Icons.arrow_back,
                     color: Colors.white,
@@ -167,7 +173,9 @@ class _AccountGuardian extends  State<AccountGuardian> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
 
-                    IconButton(onPressed: () {},
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
+                    },
 
                       icon: Icon(Icons.home,
                         color: Colors.white,
@@ -183,7 +191,9 @@ class _AccountGuardian extends  State<AccountGuardian> {
                       ),),
 
 
-                    IconButton(onPressed: () {},
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,

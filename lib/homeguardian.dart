@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:user_profile_avatar/user_profile_avatar.dart';
+import 'settingguardian.dart';
+import 'profileguardian.dart';
+import 'emergency.dart';
+import 'ridedetails.dart';
+
 
 class HomeGuardian extends StatefulWidget{
   @override
@@ -71,7 +74,10 @@ class _HomeGuardian extends  State<HomeGuardian> {
                             borderRadius: new BorderRadius.circular(35.0),
                           )
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Emergency()));
+
+                      },
 
                       child: Icon(Icons.warning,
                         color: Colors.redAccent,
@@ -117,7 +123,9 @@ class _HomeGuardian extends  State<HomeGuardian> {
                             borderRadius: new BorderRadius.circular(35.0),
                           )
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => RideDetails()));
+                      },
 
                       child: Icon(Icons.local_taxi,
                         color: Colors.redAccent,
@@ -169,7 +177,9 @@ class _HomeGuardian extends  State<HomeGuardian> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                    },
 
                       icon: Icon(Icons.settings,
                         color: Colors.white,
@@ -177,7 +187,9 @@ class _HomeGuardian extends  State<HomeGuardian> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,
