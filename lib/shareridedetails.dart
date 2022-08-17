@@ -160,15 +160,14 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
 
 
                     IconButton(onPressed: (){
-                      child:IconButton(onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
                       },
-
 
                       icon: Icon(Icons.person,
                         color: Colors.white,
                         size: 40,
                       ),),
+
 
                     IconButton(onPressed: (){},
 

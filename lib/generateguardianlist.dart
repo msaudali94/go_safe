@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-
+import 'guardianlist.dart';
+import 'settings.dart';
+import 'profileuser.dart';
+import 'homeuser.dart';
 
 class GenerateGuardianList extends StatefulWidget{
   @override
@@ -134,7 +137,9 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                             borderRadius: new BorderRadius.circular(35.0),
                           )
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => GuardianList()));
+                      },
 
                       child: Icon(Icons.view_list  ,
                         color: Colors.deepPurpleAccent.shade100,
@@ -175,7 +180,9 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                 SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                },
 
                   icon: Icon(Icons.arrow_back,
                     color: Colors.white,
@@ -190,7 +197,9 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                    },
 
                       icon: Icon(Icons.home,
                         color: Colors.white,
@@ -198,7 +207,9 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+                    },
 
                       icon: Icon(Icons.settings,
                         color: Colors.white,
@@ -206,7 +217,9 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,

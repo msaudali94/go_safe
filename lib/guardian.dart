@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
+import 'homeuser.dart';
+import 'profileuser.dart';
+import'settings.dart';
+
 
 
 class Guardian extends StatefulWidget{
@@ -300,7 +304,8 @@ class _Guardian extends  State<Guardian> {
 
 
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pop(context);   },
 
                   icon: Icon(Icons.arrow_back,
                     color: Colors.white,
@@ -315,7 +320,9 @@ class _Guardian extends  State<Guardian> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                    },
 
                       icon: Icon(Icons.home,
                         color: Colors.white,
@@ -323,7 +330,9 @@ class _Guardian extends  State<Guardian> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+                    },
 
                       icon: Icon(Icons.settings,
                         color: Colors.white,
@@ -331,7 +340,9 @@ class _Guardian extends  State<Guardian> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,
