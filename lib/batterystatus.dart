@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-
+import 'homeguardian.dart';
+import 'settingguardian.dart';
+import 'profileguardian.dart';
 
 class BatteryStatus extends StatefulWidget{
   @override
@@ -68,7 +70,9 @@ class _BatteryStatus extends  State<BatteryStatus> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.12,),
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                },
 
                   icon: Icon(Icons.arrow_back,
                     color: Colors.white,
@@ -83,7 +87,9 @@ class _BatteryStatus extends  State<BatteryStatus> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
+                },
 
                   icon: Icon(Icons.home,
                     color: Colors.white,
@@ -91,7 +97,9 @@ class _BatteryStatus extends  State<BatteryStatus> {
                   ),),
 
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                },
 
                   icon: Icon(Icons.settings,
                     color: Colors.white,
@@ -99,7 +107,9 @@ class _BatteryStatus extends  State<BatteryStatus> {
                   ),),
 
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
+                },
 
                   icon: Icon(Icons.person,
                     color: Colors.white,

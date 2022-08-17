@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_safe/res/Assets.dart';
+import 'homeguardian.dart';
+import 'settingguardian.dart';
+import 'profileguardian.dart';
 
 
 class RideDetails extends StatefulWidget{
@@ -62,7 +64,9 @@ class _RideDetails extends  State<RideDetails> {
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                },
 
                   icon: Icon(Icons.arrow_back,
                     color: Colors.white,
@@ -77,7 +81,9 @@ class _RideDetails extends  State<RideDetails> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
+                    },
 
                       icon: Icon(Icons.home,
                         color: Colors.white,
@@ -85,7 +91,9 @@ class _RideDetails extends  State<RideDetails> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                    },
 
                       icon: Icon(Icons.settings,
                         color: Colors.white,
@@ -93,7 +101,9 @@ class _RideDetails extends  State<RideDetails> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,
