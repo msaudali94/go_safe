@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_safe/res/Assets.dart';
+import 'homeuser.dart';
 
 
 class FakeCallTwo extends StatefulWidget{
@@ -80,10 +80,12 @@ class _FakeCallTwo extends  State<FakeCallTwo> {
                             ),
                             borderRadius: BorderRadius.all(Radius.circular(120))
                         ),
-                        child: Icon(Icons.call_end,
-                          color: Colors.white,
-                          size: 50,
-                        ),
+                          child:IconButton(onPressed: (){
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                            },
+                            icon: Icon(Icons.call_end, color: Colors.white, size: 50,),),
+
 
                       ),
 
