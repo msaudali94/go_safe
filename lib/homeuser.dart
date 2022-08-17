@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:user_profile_avatar/user_profile_avatar.dart';
+import 'generateguardianlist.dart';
+import 'shareridedetails.dart';
+import 'safemark.dart';
+import 'activatedfakecall.dart';
+import 'settings.dart';
+import 'profileuser.dart';
 
 class HomeUser extends StatefulWidget{
   @override
@@ -71,7 +77,11 @@ class _HomeUser extends  State<HomeUser> {
                           borderRadius: new BorderRadius.circular(35.0),
                         )
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => GenerateGuardianList()));
+
+                      },
 
                       child: Icon(Icons.shield,
                       color: Colors.deepPurpleAccent.shade100,
@@ -89,7 +99,9 @@ class _HomeUser extends  State<HomeUser> {
                             borderRadius: new BorderRadius.circular(35.0),
                           )
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ShareRideDetails()));
+                      },
 
                       child: Icon(Icons.local_taxi,
                         color: Colors.deepPurpleAccent.shade100,
@@ -138,7 +150,10 @@ class _HomeUser extends  State<HomeUser> {
                             borderRadius: new BorderRadius.circular(35.0),
                           )
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => SafeMark()));
+                      },
 
                       child: Icon(Icons.add_location_alt,
                         color: Colors.deepPurpleAccent.shade100,
@@ -156,7 +171,10 @@ class _HomeUser extends  State<HomeUser> {
                             borderRadius: new BorderRadius.circular(35.0),
                           )
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => FakeCallOne()));
+                      },
 
                       child: Icon(Icons.call,
                         color: Colors.deepPurpleAccent.shade100,
@@ -240,7 +258,9 @@ class _HomeUser extends  State<HomeUser> {
                         ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+                    },
 
                       icon: Icon(Icons.settings,
                         color: Colors.white,
@@ -248,7 +268,9 @@ class _HomeUser extends  State<HomeUser> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,

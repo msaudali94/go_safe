@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
+import 'signin.dart';
 
 class SignUp extends StatefulWidget{
   @override
@@ -256,7 +257,9 @@ class _SignUp extends  State<SignUp> {
                         fontWeight: FontWeight.w400,
                       ),),
 
-                    TextButton(onPressed: (){},
+                    TextButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+                    },
                       child: Text("Sign in",
                         style: TextStyle(
                           color: Colors.blueAccent,

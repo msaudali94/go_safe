@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
+import 'signin.dart';
+
 
 class LandingPageOne extends StatefulWidget{
    @override
@@ -50,7 +52,9 @@ class _LandingPageOne extends  State<LandingPageOne> {
 
               SizedBox(height: MediaQuery.of(context).size.height*0.2,),
 
-              TextButton(onPressed: (){},
+              TextButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+              },
                   child: Text("Sign in",
                     style: TextStyle(
                       color: Colors.white,
@@ -58,6 +62,7 @@ class _LandingPageOne extends  State<LandingPageOne> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),)
+
 
 
 
