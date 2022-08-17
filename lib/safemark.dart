@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:go_safe/res/Assets.dart';
+import 'homeuser.dart';
+import 'settings.dart';
+import 'profileuser.dart';
 
 
 class SafeMark extends StatefulWidget{
@@ -124,7 +126,9 @@ class _SafeMark extends  State<SafeMark> {
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                },
 
                   icon: Icon(Icons.arrow_back,
                     color: Colors.white,
@@ -139,7 +143,9 @@ class _SafeMark extends  State<SafeMark> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                    },
 
                       icon: Icon(Icons.home,
                         color: Colors.white,
@@ -147,7 +153,9 @@ class _SafeMark extends  State<SafeMark> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+                    },
 
                       icon: Icon(Icons.settings,
                         color: Colors.white,
@@ -155,7 +163,9 @@ class _SafeMark extends  State<SafeMark> {
                       ),),
 
 
-                    IconButton(onPressed: (){},
+                    IconButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,

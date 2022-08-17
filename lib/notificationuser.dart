@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'profileuser.dart';
+import 'homeuser.dart';
 
 class NotificationUser extends StatefulWidget{
   @override
@@ -107,7 +108,9 @@ class _NotificationUser extends  State<NotificationUser> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.365,),
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                },
 
                   icon: Icon(Icons.arrow_back,
                     color: Colors.white,
@@ -122,7 +125,9 @@ class _NotificationUser extends  State<NotificationUser> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
 
-                    IconButton(onPressed: () {},
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                    },
 
                       icon: Icon(Icons.home,
                         color: Colors.white,
@@ -138,7 +143,9 @@ class _NotificationUser extends  State<NotificationUser> {
                       ),),
 
 
-                    IconButton(onPressed: () {},
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,

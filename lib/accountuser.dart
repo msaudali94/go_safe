@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'profileuser.dart';
+import 'homeuser.dart';
 
 class AccountUser extends StatefulWidget{
   @override
@@ -75,7 +76,9 @@ class _AccountUser extends  State<AccountUser> {
 
 
 
-                    TextButton(onPressed: () {},
+                    TextButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                    },
                       child: Text("Edit Profile ",
                         style: TextStyle(
                           color: Colors.white,
@@ -152,7 +155,9 @@ class _AccountUser extends  State<AccountUser> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.12,),
 
-                IconButton(onPressed: (){},
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                },
 
                   icon: Icon(Icons.arrow_back,
                     color: Colors.white,
@@ -167,7 +172,9 @@ class _AccountUser extends  State<AccountUser> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
 
-                    IconButton(onPressed: () {},
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                    },
 
                       icon: Icon(Icons.home,
                         color: Colors.white,
@@ -183,7 +190,9 @@ class _AccountUser extends  State<AccountUser> {
                       ),),
 
 
-                    IconButton(onPressed: () {},
+                    IconButton(onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                    },
 
                       icon: Icon(Icons.person,
                         color: Colors.white,
