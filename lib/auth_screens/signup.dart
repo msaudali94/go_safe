@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'signin.dart';
+import '../auth_screens/signin.dart';
 
 class SignUp extends StatefulWidget{
   @override

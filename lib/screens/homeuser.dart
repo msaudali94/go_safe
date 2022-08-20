@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
-import 'package:user_profile_avatar/user_profile_avatar.dart';
+import 'package:go_safe/screens/shareridedetails.dart';
 import 'generateguardianlist.dart';
-import 'shareridedetails.dart';
 import 'safemark.dart';
 import 'activatedfakecall.dart';
 import 'settings.dart';

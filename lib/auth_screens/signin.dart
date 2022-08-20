@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_safe/auth_screens/signup.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-import 'signup.dart';
 
 class SignIn extends StatefulWidget{
   @override
@@ -12,8 +12,7 @@ class _SignIn extends  State<SignIn> {
 
   final List<String> items = [
     'User',
-    'Guardian',
-
+    'Guardian'
   ];
   String? selectedValue;
 
@@ -245,21 +244,9 @@ class _SignIn extends  State<SignIn> {
 
                   ],
                 ),
-
-
-
-
-
-
-
-
-
-
               ],
             ),
-
           )
-
       ),
 
     );

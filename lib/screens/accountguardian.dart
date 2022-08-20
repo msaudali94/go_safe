@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'homeguardian.dart';
-import 'profileguardian.dart';
-import 'accountguardian.dart';
-import 'notificationguardian.dart';
+import 'package:go_safe/screens/profileguardian.dart';
 
-class SettingsGuardian extends StatefulWidget{
+import 'homeguardian.dart';
+
+
+class AccountGuardian extends StatefulWidget{
   @override
-  _SettingsGuardian createState() => _SettingsGuardian();
+  _AccountGuardian createState() => _AccountGuardian();
 }
 
-class _SettingsGuardian extends  State<SettingsGuardian> {
+class _AccountGuardian extends  State<AccountGuardian> {
 
 
   @override
@@ -32,10 +32,7 @@ class _SettingsGuardian extends  State<SettingsGuardian> {
 
               children: [
 
-                SizedBox(height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.1,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
 
                 Text("Settings",
                   textAlign: TextAlign.center,
@@ -57,9 +54,7 @@ class _SettingsGuardian extends  State<SettingsGuardian> {
                       size: 30,
                     ),
 
-                    TextButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => AccountGuardian()));
-                    },
+                    TextButton(onPressed: () {},
                       child: Text("Account ",
                         style: TextStyle(
                           color: Colors.white,
@@ -69,6 +64,10 @@ class _SettingsGuardian extends  State<SettingsGuardian> {
                   ],
                 ),
 
+                Divider(
+                  thickness:0.8,
+                  color: Color(0xFFA2A0A0),
+                ),
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
@@ -77,15 +76,12 @@ class _SettingsGuardian extends  State<SettingsGuardian> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.notifications_none,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+
 
                     TextButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationGuardian()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
                     },
-                      child: Text("Notification ",
+                      child: Text("Edit Profile ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -103,13 +99,10 @@ class _SettingsGuardian extends  State<SettingsGuardian> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.lock_outline,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+
 
                     TextButton(onPressed: () {},
-                      child: Text("Privacy and Security ",
+                      child: Text("Change Password ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -127,13 +120,9 @@ class _SettingsGuardian extends  State<SettingsGuardian> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.headphones,
-                      color: Colors.white,
-                      size: 30,
-                    ),
 
                     TextButton(onPressed: () {},
-                      child: Text("Help and Support ",
+                      child: Text("Privacy ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -151,13 +140,10 @@ class _SettingsGuardian extends  State<SettingsGuardian> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.help_outline,
-                      color: Colors.white,
-                      size: 30,
-                    ),
+
 
                     TextButton(onPressed: () {},
-                      child: Text("About ",
+                      child: Text("Language",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -169,30 +155,7 @@ class _SettingsGuardian extends  State<SettingsGuardian> {
                 ),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-
-                    Icon(Icons.logout,
-                      color: Colors.redAccent,
-                      size: 30,
-                    ),
-
-                    TextButton(onPressed: () {},
-                      child: Text("Logout ",
-                        style: TextStyle(
-                          color: Colors.redAccent,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),),),
-
-                  ],
-                ),
-
-                SizedBox(height: MediaQuery.of(context).size.height * 0.06,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.12,),
 
                 IconButton(onPressed: (){
                   Navigator.pop(context);

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
+import 'package:go_safe/screens/profileguardian.dart';
+import 'package:go_safe/screens/settingguardian.dart';
+
 import 'homeguardian.dart';
-import 'settingguardian.dart';
-import 'profileguardian.dart';
+
 
 class BatteryStatus extends StatefulWidget{
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'homeguardian.dart';
-import 'settingguardian.dart';
-import 'profileguardian.dart';
+import 'package:go_safe/screens/homeguardian.dart';
+import 'package:go_safe/screens/profileguardian.dart';
+import 'package:go_safe/screens/settingguardian.dart';
 
 
 class LiveLocation extends StatefulWidget{

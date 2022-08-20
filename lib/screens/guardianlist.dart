@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'guardian.dart';
+import 'package:go_safe/screens/guardian.dart';
 import 'homeuser.dart';
 import 'settings.dart';
 import 'profileuser.dart';

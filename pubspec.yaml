@@ -37,6 +37,14 @@ dependencies:
   cupertino_icons: ^1.0.2
   dropdown_button2: ^1.7.2
   user_profile_avatar: ^0.1.1
+  connectivity:
+  provider:
+  dio:
+  fluttertoast:
+  firebase:
+  firebase_auth:
+  firebase_core:
+
 
 dev_dependencies:
   flutter_test:

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'profileguardian.dart';
+import 'package:go_safe/screens/profileguardian.dart';
+
 import 'homeguardian.dart';
 
 
-class AccountGuardian extends StatefulWidget{
+
+class NotificationGuardian extends StatefulWidget{
   @override
-  _AccountGuardian createState() => _AccountGuardian();
+  _NotificationGuardian createState() => _NotificationGuardian();
 }
 
-class _AccountGuardian extends  State<AccountGuardian> {
+class _NotificationGuardian extends  State<NotificationGuardian> {
 
-
+  bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,13 +50,13 @@ class _AccountGuardian extends  State<AccountGuardian> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.person_outline,
+                    Icon(Icons.notifications_none,
                       color: Colors.white,
                       size: 30,
                     ),
 
                     TextButton(onPressed: () {},
-                      child: Text("Account ",
+                      child: Text("Notifcation ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -75,86 +77,39 @@ class _AccountGuardian extends  State<AccountGuardian> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-
-
-                    TextButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
-                    },
-                      child: Text("Edit Profile ",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),),),
-
-                  ],
-                ),
-
-
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-
-
-
                     TextButton(onPressed: () {},
-                      child: Text("Change Password ",
+                      child: Text("App Notifications  ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
                           fontWeight: FontWeight.w400,
                         ),),),
 
-                  ],
-                ),
+                    SizedBox(width: MediaQuery.of(context).size.width * 0.16,),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
+                    Switch(
+                      value: isSwitched,
+                      onChanged: (value) {
+                        setState(() {
+                          isSwitched = value;
+                          print(isSwitched);
+                        });
+                      },
+                      inactiveThumbColor: Color(0xFFA2A0A0),
+                      inactiveTrackColor: Colors.white.withOpacity(0.8),
 
+                      activeTrackColor: Colors.green,
+                      activeColor: Colors.greenAccent,
+                    ),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-
-
-                    TextButton(onPressed: () {},
-                      child: Text("Privacy ",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),),),
-
-                  ],
-                ),
-
-
-                SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-
-
-
-                    TextButton(onPressed: () {},
-                      child: Text("Language",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w400,
-                        ),),),
 
 
                   ],
                 ),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.12,),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.365,),
 
                 IconButton(onPressed: (){
                   Navigator.pop(context);

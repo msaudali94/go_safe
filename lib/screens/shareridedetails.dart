@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'homeuser.dart';
-import 'settings.dart';
-import 'profileuser.dart';
+import 'package:go_safe/screens/homeuser.dart';
+import 'package:go_safe/screens/profileuser.dart';
+import 'package:go_safe/screens/settings.dart';
 
 class ShareRideDetails extends StatefulWidget{
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'signin.dart';
+import '../auth_screens/signin.dart';
 
 
 class LandingPageOne extends StatefulWidget{
