@@ -82,7 +82,13 @@ class _FakeCallTwo extends  State<FakeCallTwo> {
                         ),
                           child:IconButton(onPressed: (){
 
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeUser()
+                                ),
+                                    (Route<dynamic> route) => false);
+
                             },
                             icon: Icon(Icons.call_end, color: Colors.white, size: 50,),),
 

@@ -1,11 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:go_safe/auth_screens/signin.dart';
+import 'package:go_safe/providers/multi_provider.dart';
 import 'package:provider/provider.dart';
 import 'screens/homeuser.dart';
 
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -15,10 +19,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title:"Go Safe",
-      home: HomeUser()
-      );
+    return  MultiProvider(
+      providers: multiProviders,
+      child: MaterialApp(
+        title:"Go Safe",
+        home: AuthenticationWrapper()
+        ),
+    );
   }
 }
 class AuthenticationWrapper extends StatelessWidget {
@@ -27,9 +34,22 @@ class AuthenticationWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User>();
+    var currentUser = FirebaseAuth.instance.currentUser;
 
-    if(firebaseUser.emailVerified)
+    // final firebaseUser = context.watch<User>();
+    // bool isUserLoggedIn=false;
+    // FirebaseAuth.instance
+    //     .authStateChanges()
+    //     .listen((User? user) {
+    //   if (user == null) {
+    //     isUserLoggedIn = false;
+    //     print('User is currently signed out!');
+    //   } else {
+    //     isUserLoggedIn = true;
+    //     print('User is signed in!');
+    //   }
+    // });
+    if(currentUser != null)
     {
       return  HomeUser();
     }

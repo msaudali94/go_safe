@@ -322,7 +322,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
 
                     IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => UserSettings()));
                     },
 
                       icon: Icon(Icons.settings,

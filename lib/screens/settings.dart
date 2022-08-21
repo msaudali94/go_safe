@@ -1,18 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
 import 'accountuser.dart';
 import 'notificationuser.dart';
 import 'homeuser.dart';
 import 'profileuser.dart';
 
 
-class Settings extends StatefulWidget{
+class UserSettings extends StatefulWidget{
   @override
-  _Settings createState() => _Settings();
+  _UserSettings createState() => _UserSettings();
 }
 
-class _Settings extends  State<Settings> {
+class _UserSettings extends  State<UserSettings> {
 
 
   @override
@@ -251,5 +251,8 @@ class _Settings extends  State<Settings> {
       ),
 
     );
+  }
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 }

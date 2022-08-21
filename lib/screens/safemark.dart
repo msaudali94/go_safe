@@ -24,170 +24,172 @@ class _SafeMark extends  State<SafeMark> {
             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
             color: Colors.black87,
 
-            child: Column(
+            child: SingleChildScrollView(
+              child: Column(
 
-              children: [
+                children: [
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.6,),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.6,),
 
-                TextFormField(
-                  textAlign: TextAlign.center,
-                  obscureText: true,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                    enabledBorder:OutlineInputBorder(
-                      borderSide: BorderSide(color:Colors.transparent),
-                      borderRadius: BorderRadius.circular(5.5),),
+                  TextFormField(
+                    textAlign: TextAlign.center,
+                    obscureText: true,
+                    keyboardType: TextInputType.text,
+                    decoration: InputDecoration(
+                      enabledBorder:OutlineInputBorder(
+                        borderSide: BorderSide(color:Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.5),),
 
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color:Colors.transparent),
-                      borderRadius: BorderRadius.circular(5.5),),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color:Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.5),),
 
 
 
-                    hintText: "Search a place",
-                    hintStyle: TextStyle(
-                      color: Color(0xFFA2A0A0),
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w400,),
-                    filled: true,
-                    fillColor: Colors.white,
+                      hintText: "Search a place",
+                      hintStyle: TextStyle(
+                        color: Color(0xFFA2A0A0),
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w400,),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
                   ),
-                ),
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
 
 
-                Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+                  Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
 
-                    Container(
-                        height: 55,
-                        width: 55,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
+                      Container(
+                          height: 55,
+                          width: 55,
+                          decoration: BoxDecoration(
                               color: Colors.white,
-                              width: 3,
-                            ),
-                            borderRadius: BorderRadius.all(Radius.circular(120))
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.all(Radius.circular(120))
+                          ),
+                          child: IconButton(onPressed: (){},
+
+                            icon: Icon(Icons.cancel_outlined,
+                              color: Colors.redAccent,
+                              size: 32,
+                            ),)
+
+                      ),
+
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.greenAccent, // Background color
+                          minimumSize: const Size(150, 60),
+
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0),
+                          ),
                         ),
-                        child: IconButton(onPressed: (){},
+                        onPressed: () {},
 
-                          icon: Icon(Icons.cancel_outlined,
-                            color: Colors.redAccent,
-                            size: 32,
-                          ),)
-
-                    ),
-
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.greenAccent, // Background color
-                        minimumSize: const Size(150, 60),
-
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
+                        child: Text("Search",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 28.0,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
-                      onPressed: () {},
 
-                      child: Text("Search",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
+                      Container(
+                          height: 55,
+                          width: 55,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                color: Colors.white,
+                                width: 3,
+                              ),
+                              borderRadius: BorderRadius.all(Radius.circular(120))
+                          ),
+
+                          child: IconButton(onPressed: (){},
+                            icon: Icon(Icons.check_circle_outline,
+                              color: Colors.greenAccent,
+                              size: 32,
+                            ),)
+
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+
+                  IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  },
+
+                    icon: Icon(Icons.arrow_back,
+                      color: Colors.white,
+                      size: 50,
+                    ),),
+
+
+                  SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
+
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      IconButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                      },
+
+                        icon: Icon(Icons.home,
                           color: Colors.white,
-                          fontSize: 28.0,
-                          fontWeight: FontWeight.w700,
-                        ),
-                      ),
-                    ),
-
-                    Container(
-                        height: 55,
-                        width: 55,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.white,
-                              width: 3,
-                            ),
-                            borderRadius: BorderRadius.all(Radius.circular(120))
-                        ),
-
-                        child: IconButton(onPressed: (){},
-                          icon: Icon(Icons.check_circle_outline,
-                            color: Colors.greenAccent,
-                            size: 32,
-                          ),)
-
-                    ),
-                  ],
-                ),
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-
-                IconButton(onPressed: (){
-                  Navigator.pop(context);
-                },
-
-                  icon: Icon(Icons.arrow_back,
-                    color: Colors.white,
-                    size: 50,
-                  ),),
+                          size: 40,
+                        ),),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height * 0.04,),
+                      IconButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => UserSettings()));
+                      },
+
+                        icon: Icon(Icons.settings,
+                          color: Colors.white,
+                          size: 40,
+                        ),),
 
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                      IconButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                      },
 
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
-                    },
-
-                      icon: Icon(Icons.home,
-                        color: Colors.white,
-                        size: 40,
-                      ),),
+                        icon: Icon(Icons.person,
+                          color: Colors.white,
+                          size: 40,
+                        ),),
 
 
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
-                    },
+                      IconButton(onPressed: (){},
 
-                      icon: Icon(Icons.settings,
-                        color: Colors.white,
-                        size: 40,
-                      ),),
+                        icon: Icon(Icons.location_on_sharp,
+                          color: Colors.blueAccent,
+                          size: 40,
+                        ),),
 
-
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
-                    },
-
-                      icon: Icon(Icons.person,
-                        color: Colors.white,
-                        size: 40,
-                      ),),
-
-
-                    IconButton(onPressed: (){},
-
-                      icon: Icon(Icons.location_on_sharp,
-                        color: Colors.blueAccent,
-                        size: 40,
-                      ),),
-
-                  ],
-                ),
+                    ],
+                  ),
 
 
 
 
 
-              ],
+                ],
+              ),
             ),
 
           )

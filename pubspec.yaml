@@ -38,14 +38,17 @@ dependencies:
   dropdown_button2: ^1.7.2
   user_profile_avatar: ^0.1.1
   connectivity:
+  date_time_format:
   provider:
   dio:
   fluttertoast:
   firebase:
   firebase_auth:
   firebase_core:
-
-
+  cloud_firestore: ^3.4.5
+  firebase_database:
+  flutter_contacts: ^1.1.5
+  fluttercontactpicker: ^4.7.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

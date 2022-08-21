@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttercontactpicker/fluttercontactpicker.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:go_safe/screens/guardianlist.dart';
 import 'settings.dart';
@@ -29,215 +30,221 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
             padding: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.1 ),
             color: Colors.black54.withOpacity(0.9),
 
-            child: Column(
+            child: SingleChildScrollView(
+              child: Column(
 
-              children: [
+                children: [
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.08,),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
-                Icon(Icons.shield,
-                  color: Colors.white,
-                  size: 80,
-                ),
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-
-                Text("Guardian List",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
+                  Icon(Icons.shield,
                     color: Colors.white,
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.w400,
+                    size: 80,
                   ),
-                ),
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.1,),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
-
-                Text("Enter the phone number    ",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.0,
-                    fontWeight: FontWeight.w400,
-                  ),),
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.01,),
-
-                TextFormField(
-                  textAlign: TextAlign.center,
-                  keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
-                    enabledBorder:OutlineInputBorder(
-                      borderSide: BorderSide(color:Colors.transparent),
-                      borderRadius: BorderRadius.circular(5.5),),
-
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color:Colors.transparent),
-                      borderRadius: BorderRadius.circular(5.5),),
-
-                    hintText: "0300-7628401",
-                    hintStyle: TextStyle(
-                      color: Color(0xFFA2A0A0),
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w400,),
-                    filled: true,
-                    fillColor: Colors.white,
-                  ),
-                ),
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
-
-                Container(
-                  height: 55,
-                  width: 55,
-                  decoration: BoxDecoration(
+                  Text("Guardian List",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
                       color: Colors.white,
-                      border: Border.all(
-                        color: Colors.white,
-                        width: 3,
-                      ),
-                      borderRadius: BorderRadius.all(Radius.circular(120))
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
-                  child: IconButton(onPressed: (){},
-                   icon: Icon(Icons.add,
-                      color: Colors.blueAccent,
-                      size: 32,
-                    ),)
 
-                ),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.1,),
 
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+                  Text("Enter the phone number    ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w400,
+                    ),),
 
+                  SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
-                Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+                  TextFormField(
+                    textAlign: TextAlign.center,
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      enabledBorder:OutlineInputBorder(
+                        borderSide: BorderSide(color:Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.5),),
 
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.white, // Background color
-                          minimumSize: const Size(100, 100),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(35.0),
-                          )
-                      ),
-                      onPressed: () {},
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color:Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.5),),
 
-                      child: Icon(Icons.contacts  ,
-                        color: Colors.deepPurpleAccent.shade100,
-                        size: 50,
-                      ),
+                      hintText: "0300-7628401",
+                      hintStyle: TextStyle(
+                        color: Color(0xFFA2A0A0),
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w400,),
+                      filled: true,
+                      fillColor: Colors.white,
                     ),
+                  ),
 
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.white, // Background color
-                          minimumSize: const Size(100, 100),
-                          shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(35.0),
-                          )
-                      ),
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => GuardianList()));
-                      },
+                  SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 
-                      child: Icon(Icons.view_list  ,
-                        color: Colors.deepPurpleAccent.shade100,
-                        size: 50,
-                      ),
+                  Container(
+                    height: 55,
+                    width: 55,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 3,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(120))
                     ),
+                    child: IconButton(onPressed: (){},
+                     icon: Icon(Icons.add,
+                        color: Colors.blueAccent,
+                        size: 32,
+                      ),)
 
-                  ],
-                ),
+                  ),
+
+
+                  SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+
+
+                  Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.white, // Background color
+                            minimumSize: const Size(100, 100),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(35.0),
+                            )
+                        ),
+                        onPressed: () async {
+                              await ContactPickerPlatform.instance.requestPermission(force: true);
+                          final FullContact contact =
+                              await FlutterContactPicker.pickFullContact();
+                        },
+
+                        child: Icon(Icons.contacts  ,
+                          color: Colors.deepPurpleAccent.shade100,
+                          size: 50,
+                        ),
+                      ),
+
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.white, // Background color
+                            minimumSize: const Size(100, 100),
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(35.0),
+                            )
+                        ),
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => GuardianList()));
+                        },
+
+                        child: Icon(Icons.view_list  ,
+                          color: Colors.deepPurpleAccent.shade100,
+                          size: 50,
+                        ),
+                      ),
+
+                    ],
+                  ),
 
 
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.01),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.01),
 
         Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
 
 
-                Text("Contacts ",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 17.0,
-                    fontWeight: FontWeight.w400,
-                  ),),
+                  Text("Contacts ",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.w400,
+                    ),),
 
-            Text("View List ",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 17.0,
-                fontWeight: FontWeight.w400,
-              ),),
+              Text("View List ",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 17.0,
+                  fontWeight: FontWeight.w400,
+                ),),
 
-                ],
+                  ],
         ),
 
 
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 
 
-                IconButton(onPressed: (){
-                  Navigator.pop(context);
-                },
+                  IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  },
 
-                  icon: Icon(Icons.arrow_back,
-                    color: Colors.white,
-                    size: 50,
-                  ),),
-
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+                    icon: Icon(Icons.arrow_back,
+                      color: Colors.white,
+                      size: 50,
+                    ),),
 
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
-                    },
-
-                      icon: Icon(Icons.home,
-                        color: Colors.white,
-                        size: 40,
-                      ),),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 
 
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => Settings()));
-                    },
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
 
-                      icon: Icon(Icons.settings,
-                        color: Colors.white,
-                        size: 40,
-                      ),),
+                      IconButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                      },
 
-
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
-                    },
-
-                      icon: Icon(Icons.person,
-                        color: Colors.white,
-                        size: 40,
-                      ),),
-
-                    IconButton(onPressed: (){},
-
-                      icon: Icon(Icons.view_list,
-                        color: Colors.blueAccent,
-                        size: 40,
-                      ),),
-
-                  ],
-                ),
+                        icon: Icon(Icons.home,
+                          color: Colors.white,
+                          size: 40,
+                        ),),
 
 
-              ],
+                      IconButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => UserSettings()));
+                      },
+
+                        icon: Icon(Icons.settings,
+                          color: Colors.white,
+                          size: 40,
+                        ),),
+
+
+                      IconButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                      },
+
+                        icon: Icon(Icons.person,
+                          color: Colors.white,
+                          size: 40,
+                        ),),
+
+                      IconButton(onPressed: (){},
+
+                        icon: Icon(Icons.view_list,
+                          color: Colors.blueAccent,
+                          size: 40,
+                        ),),
+
+                    ],
+                  ),
+
+
+                ],
+              ),
             ),
 
           )
