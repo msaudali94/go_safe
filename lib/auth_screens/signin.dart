@@ -243,54 +243,15 @@ class _SignIn extends  State<SignIn> {
                     .then((value) async {
                   if(value=="user-not-found")
                   {
-                    // Util.showSnack(context, ("No user found for that email."));
                     Toasts.getErrorToast(text: "No user found for that email.");
-
                   }
                   else if(value=="wrong-password")
                   {
-                    // Util.showSnack(context, ("Wrong password provided for that user."));
                     Toasts.getErrorToast(text: "Wrong password provided for that user.");
-
                   }
                   else if(value=="signed-in")
                   {
-
-                    // CollectionReference db = FirebaseFirestore.instance.collection('users');
-
-                    //
-                    // final ref = FirebaseDatabase.instance.ref();
-                    // final snapshot = await ref.child('users/$userId').get();
-                    // QuerySnapshot documents = await db.where('role', isEqualTo: selectedValue).get();
-                    // FirebaseFirestore.instance.collection('/users').doc(FirebaseAuth.instance.currentUser?.uid).get({});
-                    // final ref = FirebaseDatabase.instance.ref();
-                    // final snapshot = await ref.child('users/${emailController.text.trim()}').get();
-                    // if(documents.docs.isNotEmpty)
-                    //   {
-                    //   if(selectedValue=="Guardian")
-                    //     {
-                          Toasts.getSuccessToast(text: "Successfully signed in!!");
-                    //       Navigator.pushReplacement(
-                    //           context,
-                    //           MaterialPageRoute(
-                    //               builder: (context) =>
-                    //                   HomeGuardian()));
-                    //     }
-                    //   else
-                    //     {
-                    //       Toasts.getErrorToast(text: "Successfully signed in!!");
-                    //       Navigator.pushReplacement(
-                    //           context,
-                    //           MaterialPageRoute(
-                    //               builder: (context) =>
-                    //                   HomeUser()));
-                    //     }
-                    //   }
-                    // else
-                    //   {
-                    //     Toasts.getErrorToast(text: "Something went wrong!");
-                    //   }
-
+                     Toasts.getSuccessToast(text: "Successfully signed in!!");
                   }
                   else
                   {

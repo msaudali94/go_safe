@@ -64,19 +64,20 @@ class AuthenticationService {
           .then((value) async {
             if(value.additionalUserInfo?.isNewUser??false)
               {
-                FirebaseUser.User user =
-                FirebaseUser.User(name: name, email: email, role: role);
-                await db.add(user.toJson());
+                // FirebaseUser.User user =
+                // FirebaseUser.User(name: name, email: email, role: role);
+                // await db.add(user.toJson());
+                _firestore
+                          .collection('/Users')
+                          .doc(FirebaseAuth.instance.currentUser?.email)
+                          .set({
+                        'name': name,
+                        'email': email,
+                        'role': role
+                        // 'profileImageUrl': '',
+                      });
               }
-          // _firestore
-          //           .collection('/users')
-          //           .doc(_firebaseAuth.currentUser?.uid)
-          //           .set({
-          //         'name': name,
-          //         'email': email,
-          //         'role': role
-          //         // 'profileImageUrl': '',
-          //       });
+
               })
       ;
       return "signed-up";

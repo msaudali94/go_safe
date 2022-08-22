@@ -1,5 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttercontactpicker/fluttercontactpicker.dart';
+import 'package:go_safe/models/guardian_list.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:go_safe/screens/guardianlist.dart';
 import 'settings.dart';
@@ -12,8 +16,12 @@ class GenerateGuardianList extends StatefulWidget{
 }
 
 class _GenerateGuardianList extends  State<GenerateGuardianList> {
-
-
+  final TextEditingController numberController=TextEditingController();
+  GuardianListModel guardianListModel =GuardianListModel();
+  String number="";
+  String name="";
+  String email="";
+  String address="";
   @override
   Widget build(BuildContext context){
 
@@ -66,6 +74,7 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                   SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
                   TextFormField(
+                    controller: numberController,
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
@@ -77,7 +86,7 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                         borderSide: BorderSide(color:Colors.transparent),
                         borderRadius: BorderRadius.circular(5.5),),
 
-                      hintText: "0300-7628401",
+                      hintText: number==""?"0300-7628401":number,
                       hintStyle: TextStyle(
                         color: Color(0xFFA2A0A0),
                         fontSize: 20.0,
@@ -100,7 +109,15 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                         ),
                         borderRadius: BorderRadius.all(Radius.circular(120))
                     ),
-                    child: IconButton(onPressed: (){},
+                    child: IconButton(onPressed: () async {
+                      FirebaseFirestore.instance
+                                .collection('/Users')
+                                .doc(FirebaseAuth.instance.currentUser?.email).collection('/Guardians')
+                                .doc(FirebaseAuth.instance.currentUser?.email).set({
+                        "name":name,
+                        "number":number
+                      });
+                    },
                      icon: Icon(Icons.add,
                         color: Colors.blueAccent,
                         size: 32,
@@ -127,6 +144,17 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                               await ContactPickerPlatform.instance.requestPermission(force: true);
                           final FullContact contact =
                               await FlutterContactPicker.pickFullContact();
+                          setState(() {
+                            number= contact.phones.first.number??"";
+                            name= "${contact.name?.firstName} ${contact.name?.middleName} ${contact.name?.lastName}";
+                            guardianListModel.number=number;
+                            guardianListModel.name=name;
+
+                            // email= contact.emails.first.email??"";
+                            // address= contact.addresses.first.addressLine?.first??"";
+                            // number= contact.phones.first.number??"";
+                          });
+
                         },
 
                         child: Icon(Icons.contacts  ,
