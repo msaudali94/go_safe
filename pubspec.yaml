@@ -49,6 +49,12 @@ dependencies:
   firebase_database:
   flutter_contacts: ^1.1.5
   fluttercontactpicker: ^4.7.0
+  geolocator:
+  geocoding:
+  location:
+  google_maps_flutter:
+  battery_plus: ^2.1.4+1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

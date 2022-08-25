@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'accountuser.dart';
@@ -8,6 +7,8 @@ import 'profileuser.dart';
 
 
 class UserSettings extends StatefulWidget{
+  const UserSettings({Key? key}) : super(key: key);
+
   @override
   _UserSettings createState() => _UserSettings();
 }
@@ -21,9 +22,9 @@ class _UserSettings extends  State<UserSettings> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),),
           child: Container(
@@ -39,7 +40,7 @@ class _UserSettings extends  State<UserSettings> {
                     .size
                     .height * 0.1,),
 
-                Text("Settings",
+                const Text("Settings",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -54,7 +55,7 @@ class _UserSettings extends  State<UserSettings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.person_outline,
+                    const Icon(Icons.person_outline,
                       color: Colors.white,
                       size: 30,
                     ),
@@ -62,7 +63,7 @@ class _UserSettings extends  State<UserSettings> {
                     TextButton(onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => AccountUser()));
                     },
-                      child: Text("Account ",
+                      child: const Text("Account ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -79,7 +80,7 @@ class _UserSettings extends  State<UserSettings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.notifications_none,
+                    const Icon(Icons.notifications_none,
                       color: Colors.white,
                       size: 30,
                     ),
@@ -87,7 +88,7 @@ class _UserSettings extends  State<UserSettings> {
                     TextButton(onPressed: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => NotificationUser()));
                     },
-                      child: Text("Notification ",
+                      child:const Text("Notification ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -105,13 +106,13 @@ class _UserSettings extends  State<UserSettings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.lock_outline,
+                    const  Icon(Icons.lock_outline,
                       color: Colors.white,
                       size: 30,
                     ),
 
                     TextButton(onPressed: () {},
-                      child: Text("Privacy and Security ",
+                      child:const Text("Privacy and Security ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -129,13 +130,13 @@ class _UserSettings extends  State<UserSettings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.headphones,
+                    const Icon(Icons.headphones,
                       color: Colors.white,
                       size: 30,
                     ),
 
                     TextButton(onPressed: () {},
-                      child: Text("Help and Support ",
+                      child:const Text("Help and Support ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -153,13 +154,13 @@ class _UserSettings extends  State<UserSettings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.help_outline,
+                    const Icon(Icons.help_outline,
                       color: Colors.white,
                       size: 30,
                     ),
 
                     TextButton(onPressed: () {},
-                      child: Text("About ",
+                      child: const Text("About ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -178,13 +179,13 @@ class _UserSettings extends  State<UserSettings> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.logout,
+                    const  Icon(Icons.logout,
                       color: Colors.redAccent,
                       size: 30,
                     ),
 
                     TextButton(onPressed: () {},
-                      child: Text("Logout ",
+                      child:const Text("Logout ",
                         style: TextStyle(
                           color: Colors.redAccent,
                           fontSize: 20.0,
@@ -200,7 +201,7 @@ class _UserSettings extends  State<UserSettings> {
                   Navigator.pop(context);
                 },
 
-                  icon: Icon(Icons.arrow_back,
+                  icon:const Icon(Icons.arrow_back,
                     color: Colors.white,
                     size: 50,
                   ),),
@@ -214,10 +215,10 @@ class _UserSettings extends  State<UserSettings> {
                   children: [
 
                     IconButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeUser()));
                     },
 
-                      icon: Icon(Icons.home,
+                      icon:const Icon(Icons.home,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -225,7 +226,7 @@ class _UserSettings extends  State<UserSettings> {
 
                     IconButton(onPressed: () {},
 
-                      icon: Icon(Icons.settings,
+                      icon:const Icon(Icons.settings,
                         color: Colors.blueAccent,
                         size: 40,
                       ),),
@@ -235,7 +236,7 @@ class _UserSettings extends  State<UserSettings> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
                     },
 
-                      icon: Icon(Icons.person,
+                      icon:const Icon(Icons.person,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -251,8 +252,5 @@ class _UserSettings extends  State<UserSettings> {
       ),
 
     );
-  }
-  Future<void> _signOut() async {
-    await FirebaseAuth.instance.signOut();
   }
 }

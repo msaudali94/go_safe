@@ -4,6 +4,8 @@ import 'homeuser.dart';
 import 'settings.dart';
 
 class ProfileUser extends StatefulWidget{
+  const ProfileUser({Key? key}) : super(key: key);
+
   @override
   _ProfileUser createState() => _ProfileUser();
 }
@@ -18,9 +20,9 @@ class _ProfileUser extends  State<ProfileUser> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),        ),
           child:Container(
@@ -41,7 +43,7 @@ class _ProfileUser extends  State<ProfileUser> {
                         color: Colors.white,
                         width: 2,
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(60))
+                      borderRadius: const BorderRadius.all(Radius.circular(60))
                   ),
                   //child: Image
                 ),
@@ -51,7 +53,7 @@ class _ProfileUser extends  State<ProfileUser> {
                 SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
 
-                Text("Amanda Anderson",
+                const Text("Amanda Anderson",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 28.0,
@@ -60,14 +62,14 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.01),
 
-                Icon(Icons.edit, color: Colors.white,size: 25,),
+                const Icon(Icons.edit, color: Colors.white,size: 25,),
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                      Text("Username ",
@@ -83,7 +85,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Amanda001 ",
@@ -101,7 +103,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Full name ",
@@ -117,7 +119,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Amanda Anderson ",
@@ -135,7 +137,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Email ",
@@ -151,7 +153,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Amanda@gmail.com ",
@@ -170,7 +172,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Phone ",
@@ -186,7 +188,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("+923030467891",
@@ -205,7 +207,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Gender ",
@@ -221,7 +223,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Female",
@@ -240,7 +242,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Date of birth ",
@@ -256,7 +258,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("21/10/1994 ",
@@ -275,7 +277,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("Address ",
@@ -291,7 +293,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
+                  children: const [
 
 
                     Text("585 Pugh Rd Stockport, Ohio(OH)",
@@ -312,20 +314,20 @@ class _ProfileUser extends  State<ProfileUser> {
                   children: [
 
                     IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeUser()));
                     },
 
-                      icon: Icon(Icons.home,
+                      icon: const Icon(Icons.home,
                         color: Colors.white,
                         size: 40,
                       ),),
 
 
                     IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => UserSettings()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const UserSettings()));
                     },
 
-                      icon: Icon(Icons.settings,
+                      icon: const Icon(Icons.settings,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -333,7 +335,7 @@ class _ProfileUser extends  State<ProfileUser> {
 
                     IconButton(onPressed: (){},
 
-                      icon: Icon(Icons.person,
+                      icon: const Icon(Icons.person,
                         color: Colors.blueAccent,
                         size: 40,
                       ),),

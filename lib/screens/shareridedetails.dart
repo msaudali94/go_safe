@@ -1,8 +1,14 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
+import 'package:go_safe/res/toasts.dart';
 import 'package:go_safe/screens/homeuser.dart';
 import 'package:go_safe/screens/profileuser.dart';
 import 'package:go_safe/screens/settings.dart';
+import 'package:location/location.dart';
 
 class ShareRideDetails extends StatefulWidget{
   @override
@@ -10,11 +16,37 @@ class ShareRideDetails extends StatefulWidget{
 }
 
 class _ShareRideDetails extends  State<ShareRideDetails> {
+  final plateNumberController = TextEditingController();
+  late StreamSubscription<LocationData> subscription;
+  Location location = Location();
+  LocationData? currentLocation;
+  bool _serviceEnabled = false;
+  PermissionStatus _permissionStatus = PermissionStatus.denied;
+  bool userWantToShareLiveLocation=false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+
+    super.didChangeDependencies();
+  }
 
 
   @override
   Widget build(BuildContext context){
-
+    if(userWantToShareLiveLocation)
+    {
+      subscription =
+          location.onLocationChanged.listen((clocation) {
+            currentLocation = clocation;
+            print("currentLocation$currentLocation");
+            sendLatLongToFirebase(location: "UserLocation");
+          });
+    }
     return Scaffold(
       body: Container(
           height: MediaQuery.of(context).size.height,
@@ -64,6 +96,7 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
                   SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
                   TextFormField(
+                    controller: plateNumberController,
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
@@ -101,8 +134,24 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
                               borderRadius: new BorderRadius.circular(35.0),
                             )
                         ),
-                        onPressed: () {},
+                        onPressed: () async {
+                          if(plateNumberController.text.isEmpty)
+                            {
+                              Toasts.getWarningToast(text: "Kindly enter car plate number");
+                            }
+                          else
+                            {
+                              await FirebaseFirestore.instance
+                                  .collection('/UserPlateNumber')
+                                  .doc(FirebaseAuth.instance.currentUser?.email).set({
+                                "PlateNumber":plateNumberController.text.trim(),
+                              });
+                              setState(() {
+                                userWantToShareLiveLocation=true;
+                              });
 
+                            }
+                        },
                         child: Icon(Icons.share_location  ,
                           color: Colors.deepPurpleAccent.shade100,
                           size: 50,
@@ -191,4 +240,21 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
 
     );
   }
+
+
+
+
+
+
+  Future<void> sendLatLongToFirebase({required location}) async {
+    await FirebaseFirestore.instance
+        .collection('$location')
+        .doc("${FirebaseAuth.instance.currentUser?.email}")
+        .set({
+      "latitude": currentLocation?.latitude,
+      "longitude": currentLocation?.longitude,
+      // "name": "${FirebaseAuth.instance.currentUser?.displayName}"
+    });
+  }
+
 }

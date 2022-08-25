@@ -5,6 +5,8 @@ import 'package:go_safe/screens/settingguardian.dart';
 
 
 class LiveLocation extends StatefulWidget{
+  const LiveLocation({Key? key}) : super(key: key);
+
   @override
   _LiveLocation createState() => _LiveLocation();
 }
@@ -15,7 +17,7 @@ class _LiveLocation extends  State<LiveLocation> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
 
@@ -31,7 +33,7 @@ class _LiveLocation extends  State<LiveLocation> {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.62,),
 
 
-        Text("Location",
+        const Text("Location",
           style: TextStyle(
             color: Color(0xFFA2A0A0),
             fontSize: 17.0,
@@ -50,21 +52,21 @@ class _LiveLocation extends  State<LiveLocation> {
                 color: Colors.white,
                 width: 3,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(10))
+              borderRadius: const BorderRadius.all(Radius.circular(10))
           ),
 
           child:Row(mainAxisAlignment: MainAxisAlignment.start,
 
             children: [
 
-              Icon(Icons.radio_button_checked,
+              const Icon(Icons.radio_button_checked,
               color:Colors.redAccent,
               size:40,
               ),
 
               SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
 
-              Text("258  Patten Street",
+              const Text("258  Patten Street",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   color: Colors.black,
@@ -86,7 +88,7 @@ class _LiveLocation extends  State<LiveLocation> {
                   Navigator.pop(context);
                 },
 
-                  icon: Icon(Icons.arrow_back,
+                  icon: const Icon(Icons.arrow_back,
                     color: Colors.white,
                     size: 50,
                   ),),
@@ -103,17 +105,17 @@ class _LiveLocation extends  State<LiveLocation> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
                     },
 
-                      icon: Icon(Icons.home,
+                      icon: const Icon(Icons.home,
                         color: Colors.white,
                         size: 40,
                       ),),
 
 
                     IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsGuardian()));
                     },
 
-                      icon: Icon(Icons.settings,
+                      icon: const Icon(Icons.settings,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -123,7 +125,7 @@ class _LiveLocation extends  State<LiveLocation> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
                     },
 
-                      icon: Icon(Icons.person,
+                      icon: const Icon(Icons.person,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -131,7 +133,7 @@ class _LiveLocation extends  State<LiveLocation> {
 
                     IconButton(onPressed: (){},
 
-                      icon: Icon(Icons.location_on_sharp,
+                      icon: const Icon(Icons.location_on_sharp,
                         color: Colors.blueAccent,
                         size: 40,
                       ),),

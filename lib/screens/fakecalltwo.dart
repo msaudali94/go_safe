@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'homeuser.dart';
+import 'package:go_safe/screens/homeuser.dart';
 
 
 class FakeCallTwo extends StatefulWidget{
+  const FakeCallTwo({Key? key}) : super(key: key);
+
   @override
   _FakeCallTwo createState() => _FakeCallTwo();
 }
@@ -13,7 +15,7 @@ class _FakeCallTwo extends  State<FakeCallTwo> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
 
@@ -27,13 +29,13 @@ class _FakeCallTwo extends  State<FakeCallTwo> {
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
 
-                Icon(Icons.person,
+                const Icon(Icons.person,
                   color: Colors.white,
                   size: 80,
                 ),
 
 
-                Text("Mother",
+                const Text("Mother",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -44,7 +46,7 @@ class _FakeCallTwo extends  State<FakeCallTwo> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02),
 
-                Text("00:13",
+                const Text("00:13",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -64,7 +66,7 @@ class _FakeCallTwo extends  State<FakeCallTwo> {
 
                     children: [
 
-                      Icon(Icons.volume_up,
+                      const Icon(Icons.volume_up,
                       color:Colors.white,
                       size: 40,),
 
@@ -78,26 +80,26 @@ class _FakeCallTwo extends  State<FakeCallTwo> {
                               color: Colors.redAccent,
                               width: 3,
                             ),
-                            borderRadius: BorderRadius.all(Radius.circular(120))
+                            borderRadius: const BorderRadius.all(Radius.circular(120))
                         ),
                           child:IconButton(onPressed: (){
 
                             Navigator.pushAndRemoveUntil(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomeUser()
+                                    builder: (context) => const HomeUser()
                                 ),
                                     (Route<dynamic> route) => false);
 
                             },
-                            icon: Icon(Icons.call_end, color: Colors.white, size: 50,),),
+                            icon: const Icon(Icons.call_end, color: Colors.white, size: 50,),),
 
 
                       ),
 
 
 
-                      Icon(Icons.keyboard_alt_sharp,
+                      const Icon(Icons.keyboard_alt_sharp,
                         color:Colors.white,
                         size: 40,),
 
@@ -108,7 +110,7 @@ class _FakeCallTwo extends  State<FakeCallTwo> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+                  children: const [
 
                     Text("  Decline  ",
                       style: TextStyle(

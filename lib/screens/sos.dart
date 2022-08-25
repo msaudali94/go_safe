@@ -1,15 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'homeuser.dart';
-import 'settings.dart';
-import 'profileuser.dart';
+import 'package:go_safe/screens/homeuser.dart';
+import 'package:go_safe/screens/profileuser.dart';
+import 'package:go_safe/screens/settings.dart';
 
 class Sos extends StatefulWidget{
+  const Sos({Key? key}) : super(key: key);
+
   @override
   _Sos createState() => _Sos();
 }
 
 class _Sos extends  State<Sos> {
+
+  @override
+  void initState() {
+    // ZegoExpressEngine.instance.startPlayingStream(streamID);
+
+    super.initState();
+  }
 
 
   @override
@@ -19,9 +28,9 @@ class _Sos extends  State<Sos> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),        ),
           child:Container(
@@ -35,7 +44,7 @@ class _Sos extends  State<Sos> {
                 SizedBox(height: MediaQuery.of(context).size.height*0.2,),
 
 
-                Text("An alarm has been sent to the guardians ",
+                const Text("An alarm has been sent to the guardians ",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 17.0,
@@ -55,7 +64,7 @@ class _Sos extends  State<Sos> {
                         color: Colors.white,
                         width: 3,
                       ),
-                      borderRadius: BorderRadius.all(Radius.circular(120))
+                      borderRadius: const BorderRadius.all(Radius.circular(120))
                   ),
                   child: Icon(Icons.notifications_active,
                     color: Colors.black.withOpacity(0.6),
@@ -70,7 +79,7 @@ class _Sos extends  State<Sos> {
                   Navigator.pop(context);
                 },
 
-                  icon: Icon(Icons.arrow_back,
+                  icon: const Icon(Icons.arrow_back,
                     color: Colors.white,
                     size: 50,
                   ),),
@@ -87,7 +96,7 @@ class _Sos extends  State<Sos> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
                     },
 
-                      icon: Icon(Icons.home,
+                      icon: const Icon(Icons.home,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -97,7 +106,7 @@ class _Sos extends  State<Sos> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => UserSettings()));
                     },
 
-                      icon: Icon(Icons.settings,
+                      icon: const Icon(Icons.settings,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -107,7 +116,7 @@ class _Sos extends  State<Sos> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
                     },
 
-                      icon: Icon(Icons.person,
+                      icon: const Icon(Icons.person,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -115,7 +124,7 @@ class _Sos extends  State<Sos> {
 
                     IconButton(onPressed: (){},
 
-                      icon: Icon(Icons.notifications,
+                      icon: const Icon(Icons.notifications,
                         color: Colors.blueAccent,
                         size: 40,
                       ),),

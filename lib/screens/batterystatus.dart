@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
+import 'package:go_safe/screens/homeguardian.dart';
 import 'package:go_safe/screens/profileguardian.dart';
 import 'package:go_safe/screens/settingguardian.dart';
 
-import 'homeguardian.dart';
-
 
 class BatteryStatus extends StatefulWidget{
+  const BatteryStatus({Key? key}) : super(key: key);
+
   @override
   _BatteryStatus createState() => _BatteryStatus();
 }
@@ -20,9 +21,9 @@ class _BatteryStatus extends  State<BatteryStatus> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          image: new DecorationImage(
-            image: new ExactAssetImage(Assets.logo),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: ExactAssetImage(Assets.logo),
             fit: BoxFit.cover,
           ),),
 
@@ -36,7 +37,7 @@ class _BatteryStatus extends  State<BatteryStatus> {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.14,),
 
 
-                Text("Battery",
+                const Text("Battery",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -48,7 +49,7 @@ class _BatteryStatus extends  State<BatteryStatus> {
                 SizedBox(height: MediaQuery.of(context).size.height * 0.22),
 
 
-                    Icon(Icons.battery_3_bar_sharp,
+                    const Icon(Icons.battery_3_bar_sharp,
                       color: Colors.white,
                       size: 120,
 
@@ -60,7 +61,7 @@ class _BatteryStatus extends  State<BatteryStatus> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
-                Text("25%",
+                const Text("25%",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -76,7 +77,7 @@ class _BatteryStatus extends  State<BatteryStatus> {
                   Navigator.pop(context);
                 },
 
-                  icon: Icon(Icons.arrow_back,
+                  icon: const Icon(Icons.arrow_back,
                     color: Colors.white,
                     size: 50,
                   ),),
@@ -90,20 +91,20 @@ class _BatteryStatus extends  State<BatteryStatus> {
               children: [
 
                 IconButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeGuardian()));
                 },
 
-                  icon: Icon(Icons.home,
+                  icon: const Icon(Icons.home,
                     color: Colors.white,
                     size: 40,
                   ),),
 
 
                 IconButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsGuardian()));
                 },
 
-                  icon: Icon(Icons.settings,
+                  icon: const Icon(Icons.settings,
                     color: Colors.white,
                     size: 40,
                   ),),
@@ -113,7 +114,7 @@ class _BatteryStatus extends  State<BatteryStatus> {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
                 },
 
-                  icon: Icon(Icons.person,
+                  icon: const Icon(Icons.person,
                     color: Colors.white,
                     size: 40,
                   ),),
@@ -121,7 +122,7 @@ class _BatteryStatus extends  State<BatteryStatus> {
 
                 IconButton(onPressed: (){},
 
-                  icon: Icon(Icons.battery_3_bar_sharp,
+                  icon: const Icon(Icons.battery_3_bar_sharp,
                     color: Colors.blueAccent,
                     size: 40,
                   ),),

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'profileuser.dart';
-import 'homeuser.dart';
+import 'package:go_safe/screens/homeuser.dart';
+import 'package:go_safe/screens/profileuser.dart';
+
 
 class AccountUser extends StatefulWidget{
+  const AccountUser({Key? key}) : super(key: key);
+
   @override
   _AccountUser createState() => _AccountUser();
 }
@@ -17,9 +20,9 @@ class _AccountUser extends  State<AccountUser> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),),
           child: Container(
@@ -32,7 +35,7 @@ class _AccountUser extends  State<AccountUser> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
 
-                Text("Settings",
+                const Text("Settings",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -47,13 +50,13 @@ class _AccountUser extends  State<AccountUser> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.person_outline,
+                    const Icon(Icons.person_outline,
                       color: Colors.white,
                       size: 30,
                     ),
 
                     TextButton(onPressed: () {},
-                      child: Text("Account ",
+                      child: const Text("Account ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -62,7 +65,7 @@ class _AccountUser extends  State<AccountUser> {
                   ],
                 ),
 
-                Divider(
+                const Divider(
                   thickness:0.8,
                   color: Color(0xFFA2A0A0),
                 ),
@@ -77,9 +80,9 @@ class _AccountUser extends  State<AccountUser> {
 
 
                     TextButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileUser()));
                     },
-                      child: Text("Edit Profile ",
+                      child: const Text("Edit Profile ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -100,7 +103,7 @@ class _AccountUser extends  State<AccountUser> {
 
 
                     TextButton(onPressed: () {},
-                      child: Text("Change Password ",
+                      child: const Text("Change Password ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -120,7 +123,7 @@ class _AccountUser extends  State<AccountUser> {
 
 
                     TextButton(onPressed: () {},
-                      child: Text("Privacy ",
+                      child: const Text("Privacy ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -141,7 +144,7 @@ class _AccountUser extends  State<AccountUser> {
 
 
                     TextButton(onPressed: () {},
-                      child: Text("Language",
+                      child: const Text("Language",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -159,7 +162,7 @@ class _AccountUser extends  State<AccountUser> {
                   Navigator.pop(context);
                 },
 
-                  icon: Icon(Icons.arrow_back,
+                  icon: const Icon(Icons.arrow_back,
                     color: Colors.white,
                     size: 50,
                   ),),
@@ -173,10 +176,10 @@ class _AccountUser extends  State<AccountUser> {
                   children: [
 
                     IconButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeUser()));
                     },
 
-                      icon: Icon(Icons.home,
+                      icon: const Icon(Icons.home,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -184,17 +187,17 @@ class _AccountUser extends  State<AccountUser> {
 
                     IconButton(onPressed: () {},
 
-                      icon: Icon(Icons.settings,
+                      icon: const Icon(Icons.settings,
                         color: Colors.blueAccent,
                         size: 40,
                       ),),
 
 
                     IconButton(onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileUser()));
                     },
 
-                      icon: Icon(Icons.person,
+                      icon: const Icon(Icons.person,
                         color: Colors.white,
                         size: 40,
                       ),),

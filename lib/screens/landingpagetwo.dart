@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_safe/auth_screens/signin.dart';
 import 'package:go_safe/res/Assets.dart';
-import '../auth_screens/signin.dart';
 
 class LandingPageTwo extends StatefulWidget{
+  const LandingPageTwo({Key? key}) : super(key: key);
+
   @override
   _LandingPageTwo createState() => _LandingPageTwo();
 }
@@ -15,14 +17,14 @@ class _LandingPageTwo extends  State<LandingPageTwo> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.img1),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.img1),
               fit: BoxFit.cover,
             ),        ),
           child:Container(
             padding: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.1 ),
-            color: Color(0xFF631C18).withOpacity(0.85),
+            color: const Color(0xFF631C18).withOpacity(0.85),
 
             child: Column(
 
@@ -30,7 +32,7 @@ class _LandingPageTwo extends  State<LandingPageTwo> {
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.38,),
 
-                Text("Protect employees ,members, students",
+                const Text("Protect employees ,members, students",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -39,7 +41,7 @@ class _LandingPageTwo extends  State<LandingPageTwo> {
                   ),
                 ),
 
-                Text("Your employees, members, and students will never walk alone. if any trouble, they can instantly get help.",
+                const Text("Your employees, members, and students will never walk alone. if any trouble, they can instantly get help.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFFA2A0A0),
@@ -52,9 +54,9 @@ class _LandingPageTwo extends  State<LandingPageTwo> {
 
                 TextButton(onPressed: (){
 
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const SignIn()));
                 },
-                  child: Text("Sign in",
+                  child: const Text("Sign in",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 28.0,

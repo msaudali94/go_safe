@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:go_safe/screens/profileguardian.dart';
-
 import 'homeguardian.dart';
 
 
 
 class NotificationGuardian extends StatefulWidget{
+  const NotificationGuardian({Key? key}) : super(key: key);
+
   @override
   _NotificationGuardian createState() => _NotificationGuardian();
 }
@@ -20,9 +21,9 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),),
           child: Container(
@@ -35,7 +36,7 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
 
-                Text("Settings",
+                const Text("Settings",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -50,13 +51,13 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
 
-                    Icon(Icons.notifications_none,
+                    const Icon(Icons.notifications_none,
                       color: Colors.white,
                       size: 30,
                     ),
 
                     TextButton(onPressed: () {},
-                      child: Text("Notifcation ",
+                      child: const Text("Notifcation ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -65,7 +66,7 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
                   ],
                 ),
 
-                Divider(
+                const Divider(
                   thickness:0.8,
                   color: Color(0xFFA2A0A0),
                 ),
@@ -78,7 +79,7 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
                   children: [
 
                     TextButton(onPressed: () {},
-                      child: Text("App Notifications  ",
+                      child: const Text("App Notifications  ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -93,10 +94,10 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
                       onChanged: (value) {
                         setState(() {
                           isSwitched = value;
-                          print(isSwitched);
+                          debugPrint("isSwitched $isSwitched");
                         });
                       },
-                      inactiveThumbColor: Color(0xFFA2A0A0),
+                      inactiveThumbColor: const Color(0xFFA2A0A0),
                       inactiveTrackColor: Colors.white.withOpacity(0.8),
 
                       activeTrackColor: Colors.green,
@@ -115,7 +116,7 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
                   Navigator.pop(context);
                 },
 
-                  icon: Icon(Icons.arrow_back,
+                  icon: const Icon(Icons.arrow_back,
                     color: Colors.white,
                     size: 50,
                   ),),
@@ -132,7 +133,7 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
                     },
 
-                      icon: Icon(Icons.home,
+                      icon: const Icon(Icons.home,
                         color: Colors.white,
                         size: 40,
                       ),),
@@ -140,7 +141,7 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
 
                     IconButton(onPressed: () {},
 
-                      icon: Icon(Icons.settings,
+                      icon: const Icon(Icons.settings,
                         color: Colors.blueAccent,
                         size: 40,
                       ),),
@@ -150,7 +151,7 @@ class _NotificationGuardian extends  State<NotificationGuardian> {
                       Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
                     },
 
-                      icon: Icon(Icons.person,
+                      icon: const Icon(Icons.person,
                         color: Colors.white,
                         size: 40,
                       ),),

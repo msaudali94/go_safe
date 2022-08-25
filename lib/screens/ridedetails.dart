@@ -5,6 +5,8 @@ import 'profileguardian.dart';
 
 
 class RideDetails extends StatefulWidget{
+  const RideDetails({Key? key}) : super(key: key);
+
   @override
   _RideDetails createState() => _RideDetails();
 }
@@ -15,7 +17,7 @@ class _RideDetails extends  State<RideDetails> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
 
@@ -31,7 +33,7 @@ class _RideDetails extends  State<RideDetails> {
 
                   SizedBox(height: MediaQuery.of(context).size.height * 0.64,),
 
-                  Text("Car Plate Number",
+                  const Text("Car Plate Number",
                     style: TextStyle(
                       color: Color(0xFFA2A0A0),
                       fontSize: 17.0,
@@ -50,9 +52,9 @@ class _RideDetails extends  State<RideDetails> {
                             color: Colors.white,
                             width: 3,
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(50))
+                          borderRadius: const BorderRadius.all(Radius.circular(50))
                       ),
-                      child: Text("STK-2145",
+                      child: const Text("STK-2145",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Colors.black,
@@ -69,7 +71,7 @@ class _RideDetails extends  State<RideDetails> {
                     Navigator.pop(context);
                   },
 
-                    icon: Icon(Icons.arrow_back,
+                    icon: const Icon(Icons.arrow_back,
                       color: Colors.white,
                       size: 50,
                     ),),
@@ -86,17 +88,17 @@ class _RideDetails extends  State<RideDetails> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
                       },
 
-                        icon: Icon(Icons.home,
+                        icon: const Icon(Icons.home,
                           color: Colors.white,
                           size: 40,
                         ),),
 
 
                       IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsGuardian()));
                       },
 
-                        icon: Icon(Icons.settings,
+                        icon: const Icon(Icons.settings,
                           color: Colors.white,
                           size: 40,
                         ),),
@@ -106,7 +108,7 @@ class _RideDetails extends  State<RideDetails> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
                       },
 
-                        icon: Icon(Icons.person,
+                        icon: const Icon(Icons.person,
                           color: Colors.white,
                           size: 40,
                         ),),
@@ -114,7 +116,7 @@ class _RideDetails extends  State<RideDetails> {
 
                       IconButton(onPressed: (){},
 
-                        icon: Icon(Icons.local_taxi,
+                        icon: const Icon(Icons.local_taxi,
                           color: Colors.blueAccent,
                           size: 40,
                         ),),

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'settingguardian.dart';
-import 'profileguardian.dart';
-import 'emergency.dart';
-import 'ridedetails.dart';
+import 'package:go_safe/screens/emergency.dart';
+import 'package:go_safe/screens/profileguardian.dart';
+import 'package:go_safe/screens/ridedetails.dart';
+import 'package:go_safe/screens/settingguardian.dart';
+
 
 
 class HomeGuardian extends StatefulWidget{
+  const HomeGuardian({Key? key}) : super(key: key);
+
   @override
   _HomeGuardian createState() => _HomeGuardian();
 }
@@ -21,9 +24,9 @@ class _HomeGuardian extends  State<HomeGuardian> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),        ),
           child:Container(
@@ -45,7 +48,7 @@ class _HomeGuardian extends  State<HomeGuardian> {
                           color: Colors.white,
                           width: 2,
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(60))
+                        borderRadius: const BorderRadius.all(Radius.circular(60))
                     ),
                     //child: Image
 
@@ -54,7 +57,7 @@ class _HomeGuardian extends  State<HomeGuardian> {
                   SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
 
-                  Text("Stay connected with your loved ones ",
+                  const Text("Stay connected with your loved ones ",
                     style: TextStyle(
                       color: Color(0xFFA2A0A0),
                       fontSize: 17.0,
@@ -71,8 +74,8 @@ class _HomeGuardian extends  State<HomeGuardian> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(35.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () {
@@ -80,7 +83,7 @@ class _HomeGuardian extends  State<HomeGuardian> {
 
                         },
 
-                        child: Icon(Icons.warning,
+                        child: const Icon(Icons.warning,
                           color: Colors.redAccent,
                           size: 50,
                         ),
@@ -96,7 +99,7 @@ class _HomeGuardian extends  State<HomeGuardian> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
 
                       Text("View Emergency Status",
                         style: TextStyle(
@@ -120,15 +123,15 @@ class _HomeGuardian extends  State<HomeGuardian> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(35.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => RideDetails()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const RideDetails()));
                         },
 
-                        child: Icon(Icons.local_taxi,
+                        child: const Icon(Icons.local_taxi,
                           color: Colors.redAccent,
                           size: 50,
                         ),
@@ -145,7 +148,7 @@ class _HomeGuardian extends  State<HomeGuardian> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
 
                       Text("View Ride Details",
                         style: TextStyle(
@@ -172,17 +175,17 @@ class _HomeGuardian extends  State<HomeGuardian> {
 
                       IconButton(onPressed: (){},
 
-                        icon: Icon(Icons.home,
+                        icon: const Icon(Icons.home,
                           color: Colors.blueAccent,
                           size: 40,
                         ),),
 
 
                       IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsGuardian()));
                       },
 
-                        icon: Icon(Icons.settings,
+                        icon: const Icon(Icons.settings,
                           color: Colors.white,
                           size: 40,
                         ),),
@@ -192,7 +195,7 @@ class _HomeGuardian extends  State<HomeGuardian> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
                       },
 
-                        icon: Icon(Icons.person,
+                        icon: const Icon(Icons.person,
                           color: Colors.white,
                           size: 40,
                         ),),

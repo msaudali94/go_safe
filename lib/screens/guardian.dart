@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'homeuser.dart';
-import 'profileuser.dart';
-import'settings.dart';
+import 'package:go_safe/screens/homeuser.dart';
+import 'package:go_safe/screens/profileuser.dart';
+import 'package:go_safe/screens/settings.dart';
+
 
 
 
 class Guardian extends StatefulWidget{
+  const Guardian({Key? key}) : super(key: key);
+
   @override
   _Guardian createState() => _Guardian();
 }
@@ -21,9 +24,9 @@ class _Guardian extends  State<Guardian> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),        ),
           child:Container(
@@ -37,14 +40,14 @@ class _Guardian extends  State<Guardian> {
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
-                  Icon(Icons.shield,
+                  const Icon(Icons.shield,
                     color: Colors.white,
                     size: 80,
                   ),
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
-                  Text("Guardian",
+                  const Text("Guardian",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -67,7 +70,7 @@ class _Guardian extends  State<Guardian> {
                           color: Colors.white,
                           width: 3,
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(10))
+                        borderRadius: const BorderRadius.all(Radius.circular(10))
                     ),
 
 
@@ -79,7 +82,7 @@ class _Guardian extends  State<Guardian> {
                           children: [
 
                             IconButton(onPressed: (){},
-                              icon:Icon(Icons.close,
+                              icon:const Icon(Icons.close,
                                 color:Colors.redAccent,
                                 size: 30,),
                             ),
@@ -97,7 +100,7 @@ class _Guardian extends  State<Guardian> {
                                     color: Colors.grey,
                                     width: 2,
                                   ),
-                                  borderRadius: BorderRadius.all(Radius.circular(60))
+                                  borderRadius: const BorderRadius.all(Radius.circular(60))
                               ),
                               //child: Image
                             ),
@@ -105,7 +108,7 @@ class _Guardian extends  State<Guardian> {
                         ),
 
                         Row(mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
+                          children: const [
 
                             Text("Oscar Harrison",
                               textAlign: TextAlign.center,
@@ -129,7 +132,7 @@ class _Guardian extends  State<Guardian> {
                               decoration: BoxDecoration(
                                   color: Colors.lightBlue.shade100,
 
-                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                  borderRadius: const BorderRadius.all(Radius.circular(10))
                               ),
 
                               child:Row(mainAxisAlignment: MainAxisAlignment.start,
@@ -137,14 +140,14 @@ class _Guardian extends  State<Guardian> {
                                 children: [
                                   SizedBox(width: MediaQuery.of(context).size.width*0.01,),
 
-                                  Icon(Icons.phone_android,
+                                  const Icon(Icons.phone_android,
                                     color:Colors.white,
                                     size:30,
                                   ),
 
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
 
-                                  Text("0300-2412351",
+                                  const Text("0300-2412351",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.white,
@@ -174,7 +177,7 @@ class _Guardian extends  State<Guardian> {
                               decoration: BoxDecoration(
                                   color: Colors.lightBlue.shade100,
 
-                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                  borderRadius: const BorderRadius.all(Radius.circular(10))
                               ),
 
                               child:Row(mainAxisAlignment: MainAxisAlignment.start,
@@ -182,14 +185,14 @@ class _Guardian extends  State<Guardian> {
                                 children: [
                                   SizedBox(width: MediaQuery.of(context).size.width*0.01,),
 
-                                  Icon(Icons.people,
+                                  const Icon(Icons.people,
                                     color:Colors.white,
                                     size:30,
                                   ),
 
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
 
-                                  Text("Husband",
+                                  const Text("Husband",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.white,
@@ -221,7 +224,7 @@ class _Guardian extends  State<Guardian> {
                               decoration: BoxDecoration(
                                   color: Colors.lightBlue.shade100,
 
-                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                  borderRadius: const BorderRadius.all(Radius.circular(10))
                               ),
 
                               child:Row(mainAxisAlignment: MainAxisAlignment.start,
@@ -229,14 +232,14 @@ class _Guardian extends  State<Guardian> {
                                 children: [
                                   SizedBox(width: MediaQuery.of(context).size.width*0.01,),
 
-                                  Icon(Icons.email,
+                                  const Icon(Icons.email,
                                     color:Colors.white,
                                     size:30,
                                   ),
 
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
 
-                                  Text("Oscar@gmail.com",
+                                  const Text("Oscar@gmail.com",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.white,
@@ -266,7 +269,7 @@ class _Guardian extends  State<Guardian> {
                               decoration: BoxDecoration(
                                   color: Colors.lightBlue.shade100,
 
-                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                  borderRadius: const BorderRadius.all(Radius.circular(10))
                               ),
 
                               child:Row(mainAxisAlignment: MainAxisAlignment.start,
@@ -274,14 +277,14 @@ class _Guardian extends  State<Guardian> {
                                 children: [
                                   SizedBox(width: MediaQuery.of(context).size.width*0.01,),
 
-                                  Icon(Icons.home,
+                                  const Icon(Icons.home,
                                     color:Colors.white,
                                     size:30,
                                   ),
 
                                   SizedBox(width: MediaQuery.of(context).size.width * 0.04,),
 
-                                  Text("585 Pugh Rd, Stockport",
+                                  const Text("585 Pugh Rd, Stockport",
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Colors.white,
@@ -308,7 +311,7 @@ class _Guardian extends  State<Guardian> {
                   IconButton(onPressed: (){
                     Navigator.pop(context);   },
 
-                    icon: Icon(Icons.arrow_back,
+                    icon: const Icon(Icons.arrow_back,
                       color: Colors.white,
                       size: 50,
                     ),),
@@ -322,37 +325,37 @@ class _Guardian extends  State<Guardian> {
                     children: [
 
                       IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeUser()));
                       },
 
-                        icon: Icon(Icons.home,
+                        icon: const Icon(Icons.home,
                           color: Colors.white,
                           size: 40,
                         ),),
 
 
                       IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => UserSettings()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const UserSettings()));
                       },
 
-                        icon: Icon(Icons.settings,
+                        icon: const Icon(Icons.settings,
                           color: Colors.white,
                           size: 40,
                         ),),
 
 
                       IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileUser()));
                       },
 
-                        icon: Icon(Icons.person,
+                        icon: const Icon(Icons.person,
                           color: Colors.white,
                           size: 40,
                         ),),
 
                       IconButton(onPressed: (){},
 
-                        icon: Icon(Icons.shield,
+                        icon: const Icon(Icons.shield,
                           color: Colors.blueAccent,
                           size: 40,
                         ),),

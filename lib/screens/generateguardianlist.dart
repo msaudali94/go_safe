@@ -1,16 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttercontactpicker/fluttercontactpicker.dart';
 import 'package:go_safe/models/guardian_list.dart';
 import 'package:go_safe/res/Assets.dart';
+import 'package:go_safe/res/toasts.dart';
 import 'package:go_safe/screens/guardianlist.dart';
 import 'settings.dart';
 import 'profileuser.dart';
 import 'homeuser.dart';
 
 class GenerateGuardianList extends StatefulWidget{
+  const GenerateGuardianList({Key? key}) : super(key: key);
+
   @override
   _GenerateGuardianList createState() => _GenerateGuardianList();
 }
@@ -29,9 +31,9 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),        ),
           child:Container(
@@ -45,14 +47,14 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
-                  Icon(Icons.shield,
+                  const Icon(Icons.shield,
                     color: Colors.white,
                     size: 80,
                   ),
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
-                  Text("Guardian List",
+                  const Text("Guardian List",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -64,7 +66,7 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                   SizedBox(height: MediaQuery.of(context).size.height*0.1,),
 
 
-                  Text("Enter the phone number    ",
+                  const Text("Enter the phone number    ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
@@ -79,15 +81,15 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       enabledBorder:OutlineInputBorder(
-                        borderSide: BorderSide(color:Colors.transparent),
+                        borderSide: const BorderSide(color:Colors.transparent),
                         borderRadius: BorderRadius.circular(5.5),),
 
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color:Colors.transparent),
+                        borderSide: const BorderSide(color:Colors.transparent),
                         borderRadius: BorderRadius.circular(5.5),),
 
                       hintText: number==""?"0300-7628401":number,
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                         color: Color(0xFFA2A0A0),
                         fontSize: 20.0,
                         fontWeight: FontWeight.w400,),
@@ -107,18 +109,52 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                           color: Colors.white,
                           width: 3,
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(120))
+                        borderRadius: const BorderRadius.all(Radius.circular(120))
                     ),
                     child: IconButton(onPressed: () async {
-                      FirebaseFirestore.instance
-                                .collection('/Users')
-                                .doc(FirebaseAuth.instance.currentUser?.email).collection('/Guardians')
-                                .doc(FirebaseAuth.instance.currentUser?.email).set({
-                        "name":name,
-                        "number":number
-                      });
+                      final snapshot1 = await FirebaseFirestore.instance
+                          .collection('/Guardian1').get();
+                      final snapshot2 = await FirebaseFirestore.instance
+                          .collection('/Guardian2').get();
+
+                      if (snapshot1.size == 0) {
+                        FirebaseFirestore.instance
+                            .collection('/Guardian1')
+                            .doc(FirebaseAuth.instance.currentUser?.email).set({
+                          "name":name,
+                          "number":number
+                        });
+                        Toasts.getSuccessToast(text: "First Guardian added successfully");
+
+                        print('it does not exist');
+                      }
+                      if ( snapshot2.size == 0 ) {
+                        FirebaseFirestore.instance
+                            .collection('/Guardian2')
+                            .doc(FirebaseAuth.instance.currentUser?.email).set({
+                          "name":name,
+                          "number":number
+                        });
+                        Toasts.getSuccessToast(text: "Second Guardian added successfully");
+
+                        print('it does not exist');
+                      }
+                      else
+                        {
+                          Toasts.getWarningToast(text: "Sorry!! More than two guardians are not allowed.");
+                          // print('it exist');
+
+                          // FirebaseFirestore.instance
+                          //     .collection('/Guardian1')
+                          //     .doc(FirebaseAuth.instance.currentUser?.email).set({
+                          //   "name":name,
+                          //   "number":number
+                          // });
+                        }
+
+
                     },
-                     icon: Icon(Icons.add,
+                     icon: const Icon(Icons.add,
                         color: Colors.blueAccent,
                         size: 32,
                       ),)
@@ -136,8 +172,8 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(35.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () async {
@@ -146,7 +182,7 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                               await FlutterContactPicker.pickFullContact();
                           setState(() {
                             number= contact.phones.first.number??"";
-                            name= "${contact.name?.firstName} ${contact.name?.middleName} ${contact.name?.lastName}";
+                            name= "${contact.name?.firstName ?? ""} ${contact.name?.middleName ?? ""} ${contact.name?.lastName ?? ""}";
                             guardianListModel.number=number;
                             guardianListModel.name=name;
 
@@ -167,8 +203,8 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(35.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () {
@@ -189,7 +225,7 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                   SizedBox(height: MediaQuery.of(context).size.height*0.01),
 
         Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
+          children: const [
 
 
                   Text("Contacts ",
@@ -218,7 +254,7 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                     Navigator.pop(context);
                   },
 
-                    icon: Icon(Icons.arrow_back,
+                    icon: const Icon(Icons.arrow_back,
                       color: Colors.white,
                       size: 50,
                     ),),
@@ -235,7 +271,7 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
                       },
 
-                        icon: Icon(Icons.home,
+                        icon: const Icon(Icons.home,
                           color: Colors.white,
                           size: 40,
                         ),),
@@ -245,7 +281,7 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => UserSettings()));
                       },
 
-                        icon: Icon(Icons.settings,
+                        icon: const Icon(Icons.settings,
                           color: Colors.white,
                           size: 40,
                         ),),
@@ -255,14 +291,14 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
                       },
 
-                        icon: Icon(Icons.person,
+                        icon: const Icon(Icons.person,
                           color: Colors.white,
                           size: 40,
                         ),),
 
                       IconButton(onPressed: (){},
 
-                        icon: Icon(Icons.view_list,
+                        icon: const Icon(Icons.view_list,
                           color: Colors.blueAccent,
                           size: 40,
                         ),),

@@ -21,9 +21,9 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),        ),
           child:Container(
@@ -45,7 +45,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                           color: Colors.white,
                           width: 2,
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(60))
+                        borderRadius: const BorderRadius.all(const Radius.circular(60))
                     ),
                     //child: Image
                   ),
@@ -54,7 +54,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
-                  Text("Oscar Harrison  ",
+                  const Text("Oscar Harrison  ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 28.0,
@@ -63,14 +63,14 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.01),
 
-                  Icon(Icons.edit, color: Colors.white,size: 25,),
+                  const Icon(Icons.edit, color: Colors.white,size: 25,),
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
 
 
                       Text("Username ",
@@ -86,7 +86,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
 
 
                       Text("Oscar123 ",
@@ -104,7 +104,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
 
 
                       Text("Full name ",
@@ -118,8 +118,8 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                   ),
 
 
-                  TextField(
-                    decoration: new InputDecoration.collapsed(
+                  const TextField(
+                    decoration: InputDecoration.collapsed(
                         hintText: 'Oscar Harrison',
                         hintStyle: TextStyle(
                           color: Colors.white,
@@ -135,7 +135,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
 
 
                       Text("Email ",
@@ -148,8 +148,8 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                     ],
                   ),
 
-                  TextField(
-                    decoration: new InputDecoration.collapsed(
+                  const TextField(
+                    decoration: InputDecoration.collapsed(
                         hintText: 'scar@gmail.com',
                         hintStyle: TextStyle(
                           color: Colors.white,
@@ -180,7 +180,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
 
 
                       Text("Phone ",
@@ -193,8 +193,8 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                     ],
                   ),
 
-                  TextField(
-                    decoration: new InputDecoration.collapsed(
+                  const TextField(
+                    decoration: InputDecoration.collapsed(
                         hintText: '+923002412351',
                         hintStyle: TextStyle(
                           color: Colors.white,
@@ -225,7 +225,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
 
 
                       Text("Gender ",
@@ -238,8 +238,8 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                     ],
                   ),
 
-                  TextField(
-                    decoration: new InputDecoration.collapsed(
+                  const TextField(
+                    decoration: InputDecoration.collapsed(
                         hintText: 'Male',
                         hintStyle: TextStyle(
                           color: Colors.white,
@@ -270,7 +270,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
 
 
                       Text("Date of birth ",
@@ -288,11 +288,11 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                       _selectDate(context);
                     },
                     readOnly: true,
-                    decoration: new InputDecoration.collapsed(
+                    decoration: InputDecoration.collapsed(
                         hintText: isDateSelected
                             ? "${selectedDate.toLocal().day}-${selectedDate.toLocal().month}-${selectedDate.toLocal().year}"
                             :'11/05/1988',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
                           fontWeight: FontWeight.w500,
@@ -322,7 +322,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                    children: const [
 
 
                       Text("Address",
@@ -335,8 +335,8 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                     ],
                   ),
 
-                  TextField(
-                    decoration: new InputDecoration.collapsed(
+                  const TextField(
+                    decoration:  InputDecoration.collapsed(
                         hintText: '585 Pugh Rd Stockport, Ohio(OH)',
                         hintStyle: TextStyle(
                           color: Colors.white,
@@ -372,17 +372,17 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
                       },
 
-                        icon: Icon(Icons.home,
+                        icon: const Icon(Icons.home,
                           color: Colors.white,
                           size: 40,
                         ),),
 
 
                       IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsGuardian()));
                       },
 
-                        icon: Icon(Icons.settings,
+                        icon: const Icon(Icons.settings,
                           color: Colors.white,
                           size: 40,
                         ),),
@@ -390,7 +390,7 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
 
                       IconButton(onPressed: (){},
 
-                        icon: Icon(Icons.person,
+                        icon: const Icon(Icons.person,
                           color: Colors.blueAccent,
                           size: 40,
                         ),),

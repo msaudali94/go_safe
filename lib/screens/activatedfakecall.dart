@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'fakecalltwo.dart';
-import 'homeuser.dart';
+import 'package:go_safe/screens/fakecalltwo.dart';
+import 'package:go_safe/screens/homeuser.dart';
 
 
 class FakeCallOne extends StatefulWidget{
+  const FakeCallOne({Key? key}) : super(key: key);
+
   @override
   _FakeCallOne createState() => _FakeCallOne();
 }
@@ -14,7 +16,7 @@ class _FakeCallOne extends  State<FakeCallOne> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      body: Container(
+      body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
 
@@ -28,7 +30,7 @@ class _FakeCallOne extends  State<FakeCallOne> {
               children: [
                 SizedBox(height: MediaQuery.of(context).size.height * 0.18,),
 
-                Text("Mother",
+                const Text("Mother",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,
@@ -44,7 +46,7 @@ class _FakeCallOne extends  State<FakeCallOne> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+                  children: const [
 
                     Icon(Icons.alarm,
                       color: Colors.white,
@@ -63,7 +65,7 @@ class _FakeCallOne extends  State<FakeCallOne> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+                  children: const [
 
                     Text("Remind Me  ",
                       style: TextStyle(
@@ -103,13 +105,13 @@ class _FakeCallOne extends  State<FakeCallOne> {
                           color: Colors.redAccent,
                           width: 3,
                         ),
-                        borderRadius: BorderRadius.all(Radius.circular(120))
+                        borderRadius: const BorderRadius.all(Radius.circular(120))
                     ),
                     child:IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeUser()));
                     },
 
-                        icon: Icon(Icons.call_end,
+                        icon: const Icon(Icons.call_end,
                             color: Colors.white,
                             size: 50,
                           ),
@@ -128,14 +130,14 @@ class _FakeCallOne extends  State<FakeCallOne> {
                             color: Colors.greenAccent,
                             width: 3,
                           ),
-                          borderRadius: BorderRadius.all(Radius.circular(120))
+                          borderRadius: const BorderRadius.all(Radius.circular(120))
                       ),
                       child:   IconButton(onPressed: (){
 
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => FakeCallTwo()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const FakeCallTwo()));
 
                         },
-                        icon: Icon(Icons.call,
+                        icon: const Icon(Icons.call,
                           color: Colors.white,
                           size: 50,
                         ),
@@ -150,7 +152,7 @@ class _FakeCallOne extends  State<FakeCallOne> {
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
+                  children: const [
 
                     Text("Decline  ",
                       style: TextStyle(

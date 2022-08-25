@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
-import 'batterystatus.dart';
-import 'homeguardian.dart';
-import 'settingguardian.dart';
-import 'profileguardian.dart';
-import 'livelocation.dart';
+import 'package:go_safe/screens/batterystatus.dart';
+import 'package:go_safe/screens/homeguardian.dart';
+import 'package:go_safe/screens/livelocation.dart';
+import 'package:go_safe/screens/profileguardian.dart';
+import 'package:go_safe/screens/settingguardian.dart';
 
 
 class Emergency extends StatefulWidget{
+  const Emergency({Key? key}) : super(key: key);
+
   @override
   _Emergency createState() => _Emergency();
 }
@@ -22,9 +24,9 @@ class _Emergency extends  State<Emergency> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),        ),
           child:Container(
@@ -39,14 +41,14 @@ class _Emergency extends  State<Emergency> {
                   SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
 
-                  Icon(Icons.warning,
+                  const Icon(Icons.warning,
                     color: Colors.white,
                     size: 80,
                   ),
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
-                  Text("Emergency",
+                  const Text("Emergency",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -66,15 +68,15 @@ class _Emergency extends  State<Emergency> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(35.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => LiveLocation()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const LiveLocation()));
                         },
 
-                        child: Icon(Icons.location_on,
+                        child: const Icon(Icons.location_on,
                           color: Colors.redAccent,
                           size: 50,
                         ),
@@ -86,13 +88,13 @@ class _Emergency extends  State<Emergency> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(35.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () {},
 
-                        child: Icon(Icons.volume_up,
+                        child: const Icon(Icons.volume_up,
                           color: Colors.redAccent,
                           size: 50,
                         ),
@@ -105,7 +107,7 @@ class _Emergency extends  State<Emergency> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
+                    children: const [
 
                       Text("View Location",
                         style: TextStyle(
@@ -135,15 +137,15 @@ class _Emergency extends  State<Emergency> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(35.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => BatteryStatus()));
                         },
 
-                        child: Icon(Icons.battery_3_bar_sharp,
+                        child: const Icon(Icons.battery_3_bar_sharp,
                           color: Colors.redAccent,
                           size: 50,
                         ),
@@ -155,13 +157,13 @@ class _Emergency extends  State<Emergency> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(35.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () {},
 
-                        child: Icon(Icons.call,
+                        child: const Icon(Icons.call,
                           color: Colors.redAccent,
                           size: 50,
                         ),
@@ -174,7 +176,7 @@ class _Emergency extends  State<Emergency> {
 
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
+                    children: const [
 
                       Text("Battery",
                         style: TextStyle(
@@ -205,20 +207,20 @@ class _Emergency extends  State<Emergency> {
                     children: [
 
                       IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>const HomeGuardian()));
                       },
 
-                        icon: Icon(Icons.home,
+                        icon: const Icon(Icons.home,
                           color: Colors.white,
                           size: 40,
                         ),),
 
 
                       IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SettingsGuardian()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>const SettingsGuardian()));
                       },
 
-                        icon: Icon(Icons.settings,
+                        icon: const Icon(Icons.settings,
                           color: Colors.white,
                           size: 40,
                         ),),
@@ -228,7 +230,7 @@ class _Emergency extends  State<Emergency> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
                       },
 
-                        icon: Icon(Icons.person,
+                        icon: const Icon(Icons.person,
                           color: Colors.white,
                           size: 40,
                         ),),
@@ -236,7 +238,7 @@ class _Emergency extends  State<Emergency> {
 
                       IconButton(onPressed: (){},
 
-                        icon: Icon(Icons.warning,
+                        icon: const Icon(Icons.warning,
                           color: Colors.blueAccent,
                           size: 40,
                         ),),
