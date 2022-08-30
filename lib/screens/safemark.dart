@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/toasts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -6,6 +7,7 @@ import 'package:location/location.dart';
 import 'homeuser.dart';
 import 'settings.dart';
 import 'profileuser.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class SafeMark extends StatefulWidget{
@@ -32,6 +34,7 @@ class _SafeMark extends  State<SafeMark> {
   double ?currentMarkerLat;
   double ?currentMarkerLng;
   LatLng? currentMarkerLatLng;
+  int marker=1;
 
 
 
@@ -232,7 +235,24 @@ class _SafeMark extends  State<SafeMark> {
                               borderRadius: const BorderRadius.all(Radius.circular(120))
                           ),
 
-                          child: IconButton(onPressed: (){},
+                          child: IconButton(onPressed: () async {
+
+                            await FirebaseFirestore.instance
+                                .collection('Location')
+                                .doc("${FirebaseAuth.instance.currentUser?.email}")
+                                .set({
+                              "latitude": currentLocation?.latitude,
+                              "longitude": currentLocation?.longitude,
+                              "name": "Marker$marker"
+                            });
+                            if(mounted)
+                              {
+                                setState(() {
+                                  currentMarkerLatLng?.latitude==null;
+                                  marker=marker+1;
+                                });
+                              }
+                          },
                             icon: const Icon(Icons.check_circle_outline,
                               color: Colors.greenAccent,
                               size: 32,
@@ -361,24 +381,32 @@ class _SafeMark extends  State<SafeMark> {
   // }
   _handleTap(LatLng point) {
     // currentMarkerLatLng.latitude=
-    if(markers.length==1)
+    if(currentMarkerLatLng?.latitude==null)
       {
-        debugPrint("point${point.latitude}");
-        setState(() {
-          // currentMarkerLat =
-          // currentMarkerLng =;
-          currentMarkerLatLng = LatLng(point.latitude, point.longitude);
-          markers.add(Marker(
-            markerId: MarkerId(point.toString()),
-            position: point,
-            infoWindow: const InfoWindow(
-              title: 'I am a marker',
-            ),
-            icon:
-            BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueMagenta),
-          ));
-        });
+        if(marker<=3)
+          {
+            debugPrint("point${point.latitude}");
+            setState(() {
+              // currentMarkerLat =
+              // currentMarkerLng =;
+              currentMarkerLatLng = LatLng(point.latitude, point.longitude);
+              markers.add(Marker(
+                markerId: MarkerId(point.toString()),
+                position: point,
+                infoWindow: const InfoWindow(
+                  title: 'I am a marker',
+                ),
+                icon:
+                BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueMagenta),
+              ));
+            });
+          }
+        else
+        {
+          Toasts.getSuccessToast(text: "Can't add more than three markers?");
+        }
       }
+
     else
       {
         Toasts.getSuccessToast(text: "Kindly, select what to do with first marker?");
