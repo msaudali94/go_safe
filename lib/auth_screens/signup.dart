@@ -293,7 +293,7 @@ class _SignUp extends  State<SignUp> {
                       }
                       else
                       {
-                        context.read<AuthenticationService>().signUp(email: emailController.text.trim(), password: passwordController.text.trim(), name: nameController.text.trim(), role: selectedValue.toString()).then((value) => {
+                        context.read<AuthenticationService>().signUp(number:numberController.text.trim(),email: emailController.text.trim(), password: passwordController.text.trim(), name: nameController.text.trim(), role: selectedValue.toString()).then((value) => {
                           if(value=="weak-password")
                             {
                               Toasts.getErrorToast(text: "Weak Password!!")
