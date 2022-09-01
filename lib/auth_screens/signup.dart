@@ -271,7 +271,7 @@ class _SignUp extends  State<SignUp> {
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    onPressed: () {
+                    onPressed: () async {
                       if(nameController.text.isEmpty)
                       {
                         Toasts.getErrorToast(text: "Kindly enter name!");
@@ -307,7 +307,7 @@ class _SignUp extends  State<SignUp> {
                                 Toasts.getErrorToast(text: "Something Went Wrong!")
                               }else if(value=="signed-up")
                                 {
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> SignIn())),
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> const SignIn())),
                                   Toasts.getSuccessToast(text: "Successfully Signed Up!")
                                 }
                               else
@@ -340,7 +340,7 @@ class _SignUp extends  State<SignUp> {
                         ),),
 
                       TextButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SignIn()));
                       },
                         child: const Text("Sign in",
                           style: TextStyle(
