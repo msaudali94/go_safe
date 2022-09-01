@@ -57,27 +57,23 @@ class AuthenticationService {
   }
 
   Future<String> signUp(
-      {String? email, String? password, String? role, String? name}) async {
+      {String? email, String? password, String? role, String? name, String? number}) async {
     try {
       _firebaseAuth
           .createUserWithEmailAndPassword(email: email!, password: password!)
           .then((value) async {
             if(value.additionalUserInfo?.isNewUser??false)
               {
-                // FirebaseUser.User user =
-                // FirebaseUser.User(name: name, email: email, role: role);
-                // await db.add(user.toJson());
                 _firestore
                           .collection('/Users')
                           .doc(FirebaseAuth.instance.currentUser?.email)
                           .set({
                         'name': name,
                         'email': email,
-                        'role': role
-                        // 'profileImageUrl': '',
+                        'role': role,
+                        'number': number
                       });
               }
-
               })
       ;
       return "signed-up";

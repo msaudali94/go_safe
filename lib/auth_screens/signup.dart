@@ -17,6 +17,7 @@ class _SignUp extends  State<SignUp> {
   final TextEditingController nameController = TextEditingController();
   final TextEditingController passwordController =  TextEditingController();
   final TextEditingController emailController =  TextEditingController();
+  final TextEditingController numberController =  TextEditingController();
   final List<String> items = [
     'User',
     'Guardian',
@@ -110,6 +111,35 @@ class _SignUp extends  State<SignUp> {
                         color: const Color(0xFF2C141F).withOpacity(0.85),),
 
                       hintText: "Email",
+                      hintStyle: const TextStyle(
+                        color: Color(0xFFA2A0A0),
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w400,),
+                      filled: true,
+                      fillColor: Colors.white,
+                    ),
+                  ),
+                  SizedBox(height: MediaQuery.of(context).size.height*0.04,),
+
+                  TextFormField(
+                    controller: numberController,
+
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      enabledBorder:OutlineInputBorder(
+                        borderSide: const BorderSide(color:Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.5),),
+
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(color:Colors.transparent),
+                        borderRadius: BorderRadius.circular(5.5),),
+
+                      prefixIcon: Icon(
+                        Icons.phone,
+                        size:30,
+                        color: const Color(0xFF2C141F).withOpacity(0.85),),
+
+                      hintText: "Number",
                       hintStyle: const TextStyle(
                         color: Color(0xFFA2A0A0),
                         fontSize: 18.0,
@@ -249,6 +279,9 @@ class _SignUp extends  State<SignUp> {
                       else if(emailController.text.isEmpty)
                       {
                         Toasts.getErrorToast(text: "Kindly enter email!");
+                      }else if(numberController.text.isEmpty)
+                      {
+                        Toasts.getErrorToast(text: "Kindly enter number!");
                       }
                       else if(passwordController.text.isEmpty)
                       {

@@ -20,8 +20,6 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
   late StreamSubscription<LocationData> subscription;
   Location location = Location();
   LocationData? currentLocation;
-  bool _serviceEnabled = false;
-  PermissionStatus _permissionStatus = PermissionStatus.denied;
   bool userWantToShareLiveLocation=false;
 
   @override
@@ -51,9 +49,9 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
       body: Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          decoration: BoxDecoration(
-            image: new DecorationImage(
-              image: new ExactAssetImage(Assets.logo),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: ExactAssetImage(Assets.logo),
               fit: BoxFit.cover,
             ),        ),
           child:Container(
@@ -67,14 +65,14 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
-                  Icon(Icons.local_taxi,
+                  const Icon(Icons.local_taxi,
                     color: Colors.white,
                     size: 80,
                   ),
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.01,),
 
-                  Text("Ride Details ",
+                  const Text("Ride Details ",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -86,7 +84,7 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
                   SizedBox(height: MediaQuery.of(context).size.height*0.14,),
 
 
-                  Text("Enter car plate number    ",
+                  const Text("Enter car plate number    ",
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 18.0,
@@ -101,15 +99,15 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                       enabledBorder:OutlineInputBorder(
-                        borderSide: BorderSide(color:Colors.transparent),
+                        borderSide: const BorderSide(color:Colors.transparent),
                         borderRadius: BorderRadius.circular(5.5),),
 
                       focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color:Colors.transparent),
+                        borderSide: const BorderSide(color:Colors.transparent),
                         borderRadius: BorderRadius.circular(5.5),),
 
                       hintText: "Stk-926",
-                      hintStyle: TextStyle(
+                      hintStyle: const TextStyle(
                         color: Color(0xFFA2A0A0),
                         fontSize: 20.0,
                         fontWeight: FontWeight.w400,),
@@ -130,8 +128,8 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
                         style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(35.0),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () async {
@@ -145,6 +143,8 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
                                   .collection('/UserPlateNumber')
                                   .doc(FirebaseAuth.instance.currentUser?.email).set({
                                 "PlateNumber":plateNumberController.text.trim(),
+                              }).then((value) {
+                                Toasts.getSuccessToast(text: "Ride Details Shared Successfully");
                               });
                               setState(() {
                                 userWantToShareLiveLocation=true;
@@ -162,7 +162,7 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
 
                   SizedBox(height: MediaQuery.of(context).size.height*0.01),
 
-                      Text("Share ",
+                      const Text("Share ",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 17.0,
@@ -177,7 +177,7 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
                     Navigator.pop(context);
                   },
 
-                    icon: Icon(Icons.arrow_back,
+                    icon: const Icon(Icons.arrow_back,
                       color: Colors.white,
                       size: 50,
                     ),),
@@ -190,30 +190,30 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
 
-                      IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => HomeUser()));
+                      IconButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context) => const HomeUser()));
                         },
 
-                        icon: Icon(Icons.home,
+                        icon: const Icon(Icons.home,
                           color: Colors.white,
                           size: 40,
                         ),),
 
 
                       IconButton(onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => UserSettings()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const UserSettings()));
                       },
 
-                        icon: Icon(Icons.settings,
+                        icon: const Icon(Icons.settings,
                           color: Colors.white,
                           size: 40,
                         ),),
 
 
                       IconButton(onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileUser()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileUser()));
                         },
 
-                        icon: Icon(Icons.person,
+                        icon: const Icon(Icons.person,
                           color: Colors.white,
                           size: 40,
                         ),),
@@ -221,7 +221,7 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
 
                       IconButton(onPressed: (){},
 
-                        icon: Icon(Icons.directions_car,
+                        icon: const Icon(Icons.directions_car,
                           color: Colors.blueAccent,
                           size: 40,
                         ),),

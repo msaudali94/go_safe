@@ -223,19 +223,30 @@ class _SafeMark extends State<SafeMark> {
                                   const BorderRadius.all(Radius.circular(120))),
                           child: IconButton(
                             onPressed: () async {
-                              await FirebaseFirestore.instance
-                                  .collection('Marker$marker')
-                                  .doc(
+                              if(marker<4)
+                                {
+                                  await FirebaseFirestore.instance
+                                      .collection('Marker$marker')
+                                      .doc(
                                       "${FirebaseAuth.instance.currentUser?.email}")
-                                  .set({
-                                "latitude": currentLocation?.latitude,
-                                "longitude": currentLocation?.longitude,
-                                "name": "Marker$marker"
-                              }).then((value) {
-                                marker = marker + 1;
-                                Toasts.getSuccessToast(
-                                    text: "Marker Added Successfully");
-                              });
+                                      .set({
+                                    "latitude": currentLocation?.latitude,
+                                    "longitude": currentLocation?.longitude,
+                                    "name": "Marker$marker"
+                                  }).then((value) {
+                                    Toasts.getSuccessToast(
+                                        text: "Marker Added Successfully");
+                                  });
+                                  setState(() {
+                                    marker = marker + 1;
+                                    currentMarkerLatLng=null;
+                                  });
+                                }
+                              else
+                                {
+                                  Toasts.getWarningToast(text: "No more than three markers can be added.");
+                                }
+
                               // if(mounted)
                               //   {
                               //     setState(() {
@@ -257,14 +268,14 @@ class _SafeMark extends State<SafeMark> {
 
                 Padding(
                   padding: EdgeInsets.only(
-                      top: MediaQuery.of(context).size.height * 0.8),
+                      top: MediaQuery.of(context).size.height * 0.8, left: MediaQuery.of(context).size.width*0.4),
                   child: IconButton(
                     onPressed: () {
                       Navigator.pop(context);
                     },
                     icon: const Icon(
                       Icons.arrow_back,
-                      color: Colors.white,
+                      color: Colors.black,
                       size: 50,
                     ),
                   ),
@@ -287,7 +298,7 @@ class _SafeMark extends State<SafeMark> {
                         },
                         icon: const Icon(
                           Icons.home,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 40,
                         ),
                       ),
@@ -300,7 +311,7 @@ class _SafeMark extends State<SafeMark> {
                         },
                         icon: const Icon(
                           Icons.settings,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 40,
                         ),
                       ),
@@ -313,7 +324,7 @@ class _SafeMark extends State<SafeMark> {
                         },
                         icon: const Icon(
                           Icons.person,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 40,
                         ),
                       ),
@@ -321,7 +332,7 @@ class _SafeMark extends State<SafeMark> {
                         onPressed: () {},
                         icon: const Icon(
                           Icons.location_on_sharp,
-                          color: Colors.blueAccent,
+                          color: Colors.black,
                           size: 40,
                         ),
                       ),
@@ -338,8 +349,8 @@ class _SafeMark extends State<SafeMark> {
     debugPrint("currentMarkerLatLng?.latitude${currentMarkerLatLng?.latitude}");
 
     // currentMarkerLatLng.latitude=
-    // if(currentMarkerLatLng?.latitude==null)
-    //   {
+    if(currentMarkerLatLng?.latitude==null)
+      {
     if (marker <= 3) {
       // debugPrint("point${point.latitude}");
       setState(() {
@@ -350,21 +361,21 @@ class _SafeMark extends State<SafeMark> {
           markerId: MarkerId(point.toString()),
           position: point,
           infoWindow: const InfoWindow(
-            title: 'I am a marker',
+            title: 'Mark safe location.',
           ),
           icon: BitmapDescriptor.defaultMarkerWithHue(
               BitmapDescriptor.hueMagenta),
         ));
       });
     } else {
-      Toasts.getSuccessToast(text: "Can't add more than three markers?");
+      Toasts.getWarningToast(text: "Can't add more than three markers?");
     }
-    //   }
-    //
-    // else
-    //   {
-    //     Toasts.getSuccessToast(text: "Kindly, select what to do with first marker?");
-    //   }
+      }
+
+    else
+      {
+        Toasts.getSuccessToast(text: "Kindly, select what to do with first marker?");
+      }
   }
 
   _removeMarker() {

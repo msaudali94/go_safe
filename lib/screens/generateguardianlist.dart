@@ -20,6 +20,7 @@ class GenerateGuardianList extends StatefulWidget{
 class _GenerateGuardianList extends  State<GenerateGuardianList> {
   final TextEditingController numberController=TextEditingController();
   GuardianListModel guardianListModel =GuardianListModel();
+  int guardian =1;
   String number="";
   String name="";
   String email="";
@@ -77,6 +78,12 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
 
                   TextFormField(
                     controller: numberController,
+                    onChanged: (val)
+                    {
+                      setState(() {
+                        number=val;
+                      });
+                    },
                     textAlign: TextAlign.center,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
@@ -112,45 +119,38 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                         borderRadius: const BorderRadius.all(Radius.circular(120))
                     ),
                     child: IconButton(onPressed: () async {
-                      final snapshot1 = await FirebaseFirestore.instance
-                          .collection('/Guardian1').get();
-                      final snapshot2 = await FirebaseFirestore.instance
-                          .collection('/Guardian2').get();
-
-                      if (snapshot1.size == 0) {
-                        FirebaseFirestore.instance
-                            .collection('/Guardian1')
-                            .doc(FirebaseAuth.instance.currentUser?.email).set({
-                          "name":name,
-                          "number":number
-                        });
-                        Toasts.getSuccessToast(text: "First Guardian added successfully");
-
-                        print('it does not exist');
-                      }
-                      if ( snapshot2.size == 0 ) {
-                        FirebaseFirestore.instance
-                            .collection('/Guardian2')
-                            .doc(FirebaseAuth.instance.currentUser?.email).set({
-                          "name":name,
-                          "number":number
-                        });
-                        Toasts.getSuccessToast(text: "Second Guardian added successfully");
-
-                        print('it does not exist');
-                      }
-                      else
+                      if(number.isEmpty)
                         {
-                          Toasts.getWarningToast(text: "Sorry!! More than two guardians are not allowed.");
-                          // print('it exist');
-
-                          // FirebaseFirestore.instance
-                          //     .collection('/Guardian1')
-                          //     .doc(FirebaseAuth.instance.currentUser?.email).set({
-                          //   "name":name,
-                          //   "number":number
-                          // });
+                          Toasts.getErrorToast(text: "Kindly enter number or select guardian from contacts.");
                         }
+                      else{
+                        if(guardian<3)
+                          {
+                            final snapshot = await FirebaseFirestore.instance
+                                .collection('/Guardian$guardian').get();
+                            // final snapshot2 = await FirebaseFirestore.instance
+                            //     .collection('/Guardian2').get();
+                            if (snapshot.size == 0) {
+
+                              FirebaseFirestore.instance
+                                  .collection('/Guardian$guardian')
+                                  .doc(FirebaseAuth.instance.currentUser?.email).set({
+                                "name":name,
+                                "number":number
+                              });
+                              Toasts.getSuccessToast(text: "Guardian added successfully");
+                              guardian= guardian+1;
+                              print('it does not exist');
+                            }
+                          }
+                        else
+                        {
+                          Toasts.getWarningToast(text: "No more than two guardian can be added.");
+                        }
+                      }
+                      // setState(() {
+                      //
+                      // });
 
 
                     },
@@ -185,7 +185,6 @@ class _GenerateGuardianList extends  State<GenerateGuardianList> {
                             name= "${contact.name?.firstName ?? ""} ${contact.name?.middleName ?? ""} ${contact.name?.lastName ?? ""}";
                             guardianListModel.number=number;
                             guardianListModel.name=name;
-
                             // email= contact.emails.first.email??"";
                             // address= contact.addresses.first.addressLine?.first??"";
                             // number= contact.phones.first.number??"";
