@@ -47,5 +47,18 @@
        <meta-data android:name="com.google.android.geo.API_KEY"
            android:value="AIzaSyBZoCY93kss7zkXAN9LW2N5__AhcI02GNw"/>
 
+
    </application>
+    <queries>
+        <!-- If your app checks for SMS support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="sms" />
+        </intent>
+        <!-- If your app checks for call support -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="tel" />
+        </intent>
+    </queries>
 </manifest>

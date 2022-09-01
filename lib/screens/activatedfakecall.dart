@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:go_safe/screens/fakecalltwo.dart';
 import 'package:go_safe/screens/homeuser.dart';
 
@@ -182,5 +183,10 @@ class _FakeCallOne extends  State<FakeCallOne> {
       ),
 
     );
+  }
+  @override
+  void dispose() {
+    FlutterRingtonePlayer.stop();
+    super.dispose();
   }
 }

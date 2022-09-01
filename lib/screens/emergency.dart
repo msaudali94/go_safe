@@ -5,6 +5,7 @@ import 'package:go_safe/screens/homeguardian.dart';
 import 'package:go_safe/screens/livelocation.dart';
 import 'package:go_safe/screens/profileguardian.dart';
 import 'package:go_safe/screens/settingguardian.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class Emergency extends StatefulWidget{
@@ -161,7 +162,9 @@ class _Emergency extends  State<Emergency> {
                               borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          launchPhoneDialer("03244672123") ;
+                          },
 
                         child: const Icon(Icons.call,
                           color: Colors.redAccent,
@@ -256,5 +259,17 @@ class _Emergency extends  State<Emergency> {
       ),
 
     );
+  }
+  Future<void> launchPhoneDialer(String contactNumber) async {
+    final Uri _phoneUri = Uri(
+        scheme: "tel",
+        path: contactNumber
+    );
+    try {
+      if (await canLaunch(_phoneUri.toString()))
+        await launch(_phoneUri.toString());
+    } catch (error) {
+      throw("Cannot dial");
+    }
   }
 }

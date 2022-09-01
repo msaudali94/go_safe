@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_safe/FirebaseAuthService/firebaseauthservice.dart';
+import 'package:go_safe/auth_screens/signin.dart';
 import 'package:go_safe/res/Assets.dart';
+import 'package:provider/provider.dart';
 import 'accountuser.dart';
 import 'notificationuser.dart';
 import 'homeuser.dart';
@@ -184,7 +187,15 @@ class _UserSettings extends  State<UserSettings> {
                       size: 30,
                     ),
 
-                    TextButton(onPressed: () {},
+                    TextButton(onPressed: () {
+                      context.read<AuthenticationService>().signOut();
+                      Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>const SignIn()
+                          ),
+                              (Route<dynamic> route) => false);
+                    },
                       child:const Text("Logout ",
                         style: TextStyle(
                           color: Colors.redAccent,

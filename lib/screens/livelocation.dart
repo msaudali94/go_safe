@@ -1,158 +1,279 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:go_safe/screens/homeguardian.dart';
 import 'package:go_safe/screens/profileguardian.dart';
 import 'package:go_safe/screens/settingguardian.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 
-
-class LiveLocation extends StatefulWidget{
+class LiveLocation extends StatefulWidget {
   const LiveLocation({Key? key}) : super(key: key);
 
   @override
   _LiveLocation createState() => _LiveLocation();
 }
 
-class _LiveLocation extends  State<LiveLocation> {
+class _LiveLocation extends State<LiveLocation> {
+  String kGoogleApiKey = "AIzaSyCqGcDZJekuh5y-pUiXZGyWoHEQOZQOe4Q";
+  LatLng? currentMarkerLatLng;
+  GoogleMapController? controller;
+  MarkerId? selectedMarker;
+  LatLng? markerPosition;
+  String locationName="";
+  late double longitude;
+  late double latitude;
+  GoogleMapController? mapController; //contrller for Google map
+  final Set<Marker> markers = {}; //markers for google map
+  static LatLng showLocation = const LatLng(27.7089427, 85.3086209);
+  LocationData? currentLocation;
+  late LocationData destinationLocation;
+  late Location location;
+  late StreamSubscription<LocationData> subscription;
+
+  onMapCreated(GoogleMapController controller) {
+    //method called when map is created
+    setState(() {
+      mapController = controller;
+      controller.animateCamera(CameraUpdate.newCameraPosition(
+        CameraPosition(
+          target: showLocation,
+          zoom: 15.89,
+        ),
+      ));
+    });
+  }
+  
+  getUserLocation()
+  async {
+    final ref = await FirebaseFirestore.instance
+        .collection('UserLocation')
+        .doc("ab@gmail.com")
+        .get();
+    // final ref = FirebaseDatabase.instance.ref();
+    // final snapshot = await ref.child('users/$userId').get();
+    if (ref.exists) {
+      print("ref.reference${ref.get("locationName")}");
+      locationName = "${ref.get("locationName")}";
+      longitude=double.parse("${ref.get("longitude")}");
+      latitude=double.parse("${ref.get("latitude")}");
+    } else {
+      print('No data available.');
+    }
+    setState(() {
+
+    });
+  }
+
+  @override
+  void initState() {
+    getUserLocation();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      location = Location();
+      subscription = location.onLocationChanged.listen((clocation) {
+        currentLocation = clocation;
+        showLocation = LatLng(clocation.latitude!, clocation.longitude!);
+        debugPrint("currentLocation$currentLocation");
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    CameraPosition initialCameraPosition = CameraPosition(
+      zoom: 15.89,
+      tilt: 40,
+      bearing: 20,
+      target: currentLocation != null
+          ? LatLng(
+              latitude,
+              longitude,
+            )
+          : const LatLng(0.0, 0.0),
+    );
 
     return Scaffold(
       body: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-
-
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
+            // padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
             color: Colors.black87,
 
-            child: Column(
-
+            child: Stack(
               children: [
-
-                SizedBox(height: MediaQuery.of(context).size.height * 0.62,),
-
-
-        const Text("Location",
-          style: TextStyle(
-            color: Color(0xFFA2A0A0),
-            fontSize: 17.0,
-            fontWeight: FontWeight.w400,
-          ),),
-
-        SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
-
-        Container(
-          alignment: Alignment.centerLeft,
-          height: 70,
-          width: 400,
-          decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: Colors.white,
-                width: 3,
-              ),
-              borderRadius: const BorderRadius.all(Radius.circular(10))
-          ),
-
-          child:Row(mainAxisAlignment: MainAxisAlignment.start,
-
-            children: [
-
-              const Icon(Icons.radio_button_checked,
-              color:Colors.redAccent,
-              size:40,
-              ),
-
-              SizedBox(width: MediaQuery.of(context).size.width * 0.02,),
-
-              const Text("258  Patten Street",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w500,
+                GoogleMap(
+                  //Map widget from google_maps_flutter package
+                  onTap: _handleTap,
+                  myLocationEnabled: true,
+                  zoomGesturesEnabled: true,
+                  //enable Zoom in, out on map
+                  initialCameraPosition: initialCameraPosition,
+                  markers: markers,
+                  //markers to show on map
+                  mapType: MapType.normal,
+                  //map type
+                  onMapCreated: onMapCreated,
                 ),
 
-              ),
-
-            ],
-          ),
-
-        ),
-
-
-                SizedBox(height: MediaQuery.of(context).size.height*0.04,),
-
-                IconButton(onPressed: (){
-                  Navigator.pop(context);
-                },
-
-                  icon: const Icon(Icons.arrow_back,
-                    color: Colors.white,
-                    size: 50,
-                  ),),
-
-
-                SizedBox(height: MediaQuery.of(context).size.height * 0.06,),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => HomeGuardian()));
-                    },
-
-                      icon: const Icon(Icons.home,
-                        color: Colors.white,
-                        size: 40,
-                      ),),
-
-
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsGuardian()));
-                    },
-
-                      icon: const Icon(Icons.settings,
-                        color: Colors.white,
-                        size: 40,
-                      ),),
-
-
-                    IconButton(onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileGuardian()));
-                    },
-
-                      icon: const Icon(Icons.person,
-                        color: Colors.white,
-                        size: 40,
-                      ),),
-
-
-                    IconButton(onPressed: (){},
-
-                      icon: const Icon(Icons.location_on_sharp,
-                        color: Colors.blueAccent,
-                        size: 40,
-                      ),),
-
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.6),
+                  child: const Text(
+                    "Location",
+                    style: TextStyle(
+                      color: Color(0xFFA2A0A0),
+                      fontSize: 17.0,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
                 ),
 
+                // SizedBox(height: MediaQuery.of(context).size.height * 0.01,),
 
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.63),
+                  child: Container(
 
+                    alignment: Alignment.centerLeft,
+                    height: 70,
+                    width: MediaQuery.of(context).size.width,
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 3,
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(10))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        const Icon(
+                          Icons.radio_button_checked,
+                          color: Colors.redAccent,
+                          size: 40,
+                        ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.02,
+                        ),
+                         Text(
+                           locationName==""?"258  Patten Street":locationName,
+                          textAlign: TextAlign.center,
+                          softWrap: true,
+                          style: TextStyle(
+                            overflow: TextOverflow.ellipsis,
 
+                            color: Colors.black,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
 
+                // SizedBox(height: MediaQuery.of(context).size.height*0.04,),
 
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.75, left: MediaQuery.of(context).size.width * 0.4),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.black,
+                      size: 50,
+                    ),
+                  ),
+                ),
+
+                // SizedBox(height: MediaQuery.of(context).size.height * 0.06,),
+
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.85),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomeGuardian()));
+                        },
+                        icon: const Icon(
+                          Icons.home,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SettingsGuardian()));
+                        },
+                        icon: const Icon(
+                          Icons.settings,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ProfileGuardian()));
+                        },
+                        icon: const Icon(
+                          Icons.person,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.location_on_sharp,
+                          color: Colors.black,
+                          size: 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
-
-          )
-
-      ),
-
+          )),
     );
+  }
+
+  _handleTap(LatLng point) {
+    setState(() {
+      // currentMarkerLat =
+      // currentMarkerLng =;
+      currentMarkerLatLng = LatLng(point.latitude, point.longitude);
+      markers.add(Marker(
+        markerId: MarkerId(point.toString()),
+        position: point,
+        infoWindow: const InfoWindow(
+          title: 'I am a marker',
+        ),
+        icon:
+            BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueMagenta),
+      ));
+    });
   }
 }

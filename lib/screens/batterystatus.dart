@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:go_safe/screens/homeguardian.dart';
@@ -13,6 +14,32 @@ class BatteryStatus extends StatefulWidget{
 }
 
 class _BatteryStatus extends  State<BatteryStatus> {
+  String batteryLevel="";
+
+
+  @override
+  void initState() {
+    getBatteryStatus();
+    super.initState();
+  }
+
+
+  getBatteryStatus()
+  async {
+      final ref = await FirebaseFirestore.instance
+          .collection('UserBattery')
+          .doc("ab@gmail.com")
+          .get();
+      if (ref.exists) {
+        print("ref.reference${ref.get("battery_level")}");
+        batteryLevel = "${ref.get("battery_level")}";
+      } else {
+        print('No data available.');
+      }
+      setState(() {
+
+      });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,9 +88,9 @@ class _BatteryStatus extends  State<BatteryStatus> {
 
                 SizedBox(height: MediaQuery.of(context).size.height * 0.02,),
 
-                const Text("25%",
+                Text(batteryLevel==""?"25%":"$batteryLevel%",
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 28.0,
                     fontWeight: FontWeight.w500,

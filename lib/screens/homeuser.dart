@@ -1,5 +1,10 @@
 import 'dart:async';
+import 'package:battery_plus/battery_plus.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
+import 'package:geocoder2/geocoder2.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:go_safe/screens/shareridedetails.dart';
 import 'package:location/location.dart';
@@ -22,6 +27,7 @@ class _HomeUser extends State<HomeUser> {
   LocationData? currentLocation;
   bool _serviceEnabled = false;
   PermissionStatus _permissionStatus = PermissionStatus.denied;
+  var battery = Battery();
 
   @override
   void initState() {
@@ -48,6 +54,7 @@ class _HomeUser extends State<HomeUser> {
     }
 
     currentLocation = await location.getLocation();
+    setState(() {});
   }
 
   @override
@@ -198,6 +205,13 @@ class _HomeUser extends State<HomeUser> {
                               borderRadius:  BorderRadius.circular(35.0),
                             )),
                         onPressed: () {
+                          FlutterRingtonePlayer.play(
+                            android: AndroidSounds.ringtone,
+                            ios: IosSounds.glass,
+                            looping: true, // Android only - API >= 28
+                            volume: 0.9, // Android only - API >= 28
+                            asAlarm: false, // Android only - all APIs
+                          );
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -255,7 +269,27 @@ class _HomeUser extends State<HomeUser> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(100.0),
                             )),
-                        onPressed: () {
+                        onPressed: () async {
+                          GeoData data = await Geocoder2.getDataFromCoordinates(
+                              latitude: currentLocation!.latitude!,
+                              longitude: currentLocation!.longitude!,
+                              googleMapApiKey: kGoogleApiKey);
+
+                          await FirebaseFirestore.instance
+                              .collection('UserLocation')
+                              .doc("${FirebaseAuth.instance.currentUser?.email}")
+                              .set({
+                            "latitude": currentLocation?.latitude,
+                            "longitude": currentLocation?.longitude,
+                            "locationName":data.address
+                          });
+                          await FirebaseFirestore.instance
+                              .collection('UserBattery')
+                              .doc("${FirebaseAuth.instance.currentUser?.email}")
+                              .set({
+                            "battery_level": await battery.batteryLevel});
+
+
                           // ZegoUser user = ZegoUser.id('user1');
                           //
                           // ZegoRoomConfig config = ZegoRoomConfig.defaultConfig();
