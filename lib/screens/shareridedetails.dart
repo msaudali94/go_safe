@@ -24,6 +24,12 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
 
   @override
   void initState() {
+    subscription =
+        location.onLocationChanged.listen((clocation) {
+          currentLocation = clocation;
+          print("currentLocation$currentLocation");
+          sendLatLongToFirebase(location: "UserLocation");
+        });
     super.initState();
   }
 
@@ -36,15 +42,15 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
 
   @override
   Widget build(BuildContext context){
-    if(userWantToShareLiveLocation)
-    {
-      subscription =
-          location.onLocationChanged.listen((clocation) {
-            currentLocation = clocation;
-            print("currentLocation$currentLocation");
-            sendLatLongToFirebase(location: "UserLocation");
-          });
-    }
+    // if(userWantToShareLiveLocation)
+    // {
+    //   subscription =
+    //       location.onLocationChanged.listen((clocation) {
+    //         currentLocation = clocation;
+    //         print("currentLocation$currentLocation");
+    //         sendLatLongToFirebase(location: "UserLocation");
+    //       });
+    // }
     return Scaffold(
       body: Container(
           height: MediaQuery.of(context).size.height,
@@ -143,6 +149,8 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
                                   .collection('/UserPlateNumber')
                                   .doc(FirebaseAuth.instance.currentUser?.email).set({
                                 "PlateNumber":plateNumberController.text.trim(),
+                                "latitude":currentLocation?.latitude,
+                                "longitude":currentLocation?.longitude
                               }).then((value) {
                                 Toasts.getSuccessToast(text: "Ride Details Shared Successfully");
                               });

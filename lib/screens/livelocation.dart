@@ -1,7 +1,5 @@
 import 'dart:async';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:go_safe/screens/homeguardian.dart';
 import 'package:go_safe/screens/profileguardian.dart';
@@ -46,7 +44,7 @@ class _LiveLocation extends State<LiveLocation> {
     });
   }
   
-  getUserLocation()
+  Future<void> getUserLocation()
   async {
     final ref = await FirebaseFirestore.instance
         .collection('UserLocation')
@@ -55,20 +53,21 @@ class _LiveLocation extends State<LiveLocation> {
     // final ref = FirebaseDatabase.instance.ref();
     // final snapshot = await ref.child('users/$userId').get();
     if (ref.exists) {
-      print("ref.reference${ref.get("locationName")}");
-      locationName = "${ref.get("locationName")}";
-      longitude=double.parse("${ref.get("longitude")}");
-      latitude=double.parse("${ref.get("latitude")}");
+        locationName = "${ref.get("locationName")}";
+        longitude=double.parse("${ref.get("longitude")}");
+        latitude=double.parse("${ref.get("latitude")}");
     } else {
       print('No data available.');
     }
     setState(() {
-
+      debugPrint("locationNameLatitude$latitude");
     });
   }
 
   @override
   void initState() {
+    longitude=35.213212;
+    latitude=73.233112;
     getUserLocation();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       location = Location();
@@ -87,7 +86,7 @@ class _LiveLocation extends State<LiveLocation> {
       zoom: 15.89,
       tilt: 40,
       bearing: 20,
-      target: currentLocation != null
+      target: latitude != null
           ? LatLng(
               latitude,
               longitude,
