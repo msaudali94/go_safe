@@ -1,4 +1,4 @@
-const String kGoogleApiKey = "AIzaSyCqGcDZJekuh5y-pUiXZGyWoHEQOZQOe4Q";
+const String kGoogleApiKey = "AIzaSyBgM6fcjeix9iHHJJC1vJPOGn47S_p7-yc";
 
 class Assets{
   static const String img1 = "assets/images/img1.jpg";

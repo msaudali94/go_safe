@@ -4,10 +4,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
+import 'package:flutter_sms/flutter_sms.dart';
 import 'package:geocoder2/geocoder2.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:go_safe/screens/shareridedetails.dart';
 import 'package:location/location.dart';
+import 'package:permission_handler/permission_handler.dart'hide PermissionStatus;
 import 'activatedfakecall.dart';
 import 'generateguardianlist.dart';
 import 'profileuser.dart';
@@ -22,7 +24,7 @@ class HomeUser extends StatefulWidget {
 }
 
 class _HomeUser extends State<HomeUser> {
-  late StreamSubscription<LocationData> subscription;
+  // late StreamSubscription<LocationData> subscription;
   Location location = Location();
   LocationData? currentLocation;
   bool _serviceEnabled = false;
@@ -52,6 +54,11 @@ class _HomeUser extends State<HomeUser> {
         return;
       }
     }
+
+    if(await Permission.sms.isGranted ==false)
+      {
+        await Permission.sms.request();
+      }
 
     currentLocation = await location.getLocation();
     setState(() {});
@@ -270,26 +277,33 @@ class _HomeUser extends State<HomeUser> {
                               borderRadius: BorderRadius.circular(100.0),
                             )),
                         onPressed: () async {
-                          GeoData data = await Geocoder2.getDataFromCoordinates(
-                              latitude: currentLocation!.latitude!,
-                              longitude: currentLocation!.longitude!,
-                              googleMapApiKey: kGoogleApiKey);
+                          // GeoData data = await Geocoder2.getDataFromCoordinates(
+                          //     latitude: currentLocation!.latitude!,
+                          //     longitude: currentLocation!.longitude!,
+                          //     googleMapApiKey: kGoogleApiKey);
+                          //
+                          // await FirebaseFirestore.instance
+                          //     .collection('UserLocation')
+                          //     .doc("${FirebaseAuth.instance.currentUser?.email}")
+                          //     .set({
+                          //   "latitude": currentLocation?.latitude,
+                          //   "longitude": currentLocation?.longitude,
+                          //   "locationName":data.address
+                          // });
+                          // await FirebaseFirestore.instance
+                          //     .collection('UserBattery')
+                          //     .doc("${FirebaseAuth.instance.currentUser?.email}")
+                          //     .set({
+                          //   "battery_level": await battery.batteryLevel});
+                          var documentList = (await FirebaseFirestore.instance
+                              .collection("Users")
+                              .where("role",isEqualTo: "Guardian")
+                              .get());
+                          print("documentList${documentList.docs.first.get("number")}");
 
-                          await FirebaseFirestore.instance
-                              .collection('UserLocation')
-                              .doc("${FirebaseAuth.instance.currentUser?.email}")
-                              .set({
-                            "latitude": currentLocation?.latitude,
-                            "longitude": currentLocation?.longitude,
-                            "locationName":data.address
-                          });
-                          await FirebaseFirestore.instance
-                              .collection('UserBattery')
-                              .doc("${FirebaseAuth.instance.currentUser?.email}")
-                              .set({
-                            "battery_level": await battery.batteryLevel});
-
-
+                          String message = "Latitude: ${currentLocation?.latitude}, Longitude: ${currentLocation?.longitude}";
+                          List<String> recipents = ["${documentList.docs.first.get("number")}"];
+                          _sendSMS(recipents,message );
                           // ZegoUser user = ZegoUser.id('user1');
                           //
                           // ZegoRoomConfig config = ZegoRoomConfig.defaultConfig();
@@ -359,5 +373,22 @@ class _HomeUser extends State<HomeUser> {
             ),
           )),
     );
+  }
+  Future<void> _sendSMS(List<String> recipients, String ?msg) async {
+    try {
+      String _result = await sendSMS(
+        message: msg??"",
+        recipients: recipients,
+        sendDirect: true,
+      );
+      setState(() {
+        print("_result $_result");
+      });
+    } catch (error) {
+
+      setState(() {
+        print("error $error");
+      });
+    }
   }
 }

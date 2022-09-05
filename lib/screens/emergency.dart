@@ -67,7 +67,7 @@ class _Emergency extends  State<Emergency> {
 
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white, // Background color
+                            backgroundColor: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(35.0),
@@ -87,7 +87,7 @@ class _Emergency extends  State<Emergency> {
 
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white, // Background color
+                            backgroundColor: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(35.0),

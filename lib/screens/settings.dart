@@ -187,14 +187,15 @@ class _UserSettings extends  State<UserSettings> {
                       size: 30,
                     ),
 
-                    TextButton(onPressed: () {
-                      context.read<AuthenticationService>().signOut();
-                      Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>const SignIn()
-                          ),
-                              (Route<dynamic> route) => false);
+                    TextButton(onPressed: () async {
+                      await context.read<AuthenticationService>().signOut().then((value){
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>const SignIn()
+                            ),
+                                (Route<dynamic> route) => false);
+                      });
                     },
                       child:const Text("Logout ",
                         style: TextStyle(

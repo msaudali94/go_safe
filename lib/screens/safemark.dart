@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:go_safe/res/Assets.dart';
 import 'package:go_safe/res/toasts.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:google_maps_webservice/places.dart'
@@ -29,7 +30,7 @@ class SafeMark extends StatefulWidget {
 
 class _SafeMark extends State<SafeMark> {
   String? locationString, lat, lng = "";
-  String kGoogleApiKey = "AIzaSyCqGcDZJekuh5y-pUiXZGyWoHEQOZQOe4Q";
+  // String kGoogleApiKey = "AIzaSyCqGcDZJekuh5y-pUiXZGyWoHEQOZQOe4Q";
 
   GoogleMapController? controller;
   MarkerId? selectedMarker;

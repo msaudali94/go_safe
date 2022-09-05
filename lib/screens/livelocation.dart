@@ -15,7 +15,6 @@ class LiveLocation extends StatefulWidget {
 }
 
 class _LiveLocation extends State<LiveLocation> {
-  String kGoogleApiKey = "AIzaSyCqGcDZJekuh5y-pUiXZGyWoHEQOZQOe4Q";
   LatLng? currentMarkerLatLng;
   GoogleMapController? controller;
   MarkerId? selectedMarker;
@@ -24,20 +23,21 @@ class _LiveLocation extends State<LiveLocation> {
   late double longitude;
   late double latitude;
   GoogleMapController? mapController; //contrller for Google map
-  final Set<Marker> markers = {}; //markers for google map
-  static LatLng showLocation = const LatLng(27.7089427, 85.3086209);
-  LocationData? currentLocation;
+  final Set<Marker> markers = new Set();
+  // late LatLng ? showLocation;
+  // LocationData? currentLocation;
   late LocationData destinationLocation;
   late Location location;
-  late StreamSubscription<LocationData> subscription;
+  // late StreamSubscription<LocationData> subscription;
 
   onMapCreated(GoogleMapController controller) {
+    debugPrint("longitudemarkers $longitude, latitude $latitude");
     //method called when map is created
     setState(() {
       mapController = controller;
       controller.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(
-          target: showLocation,
+          target: LatLng(latitude,longitude),
           zoom: 15.89,
         ),
       ));
@@ -61,6 +61,8 @@ class _LiveLocation extends State<LiveLocation> {
     }
     setState(() {
       debugPrint("locationNameLatitude$latitude");
+
+      // showLocation =  LatLng(latitude, longitude);
     });
   }
 
@@ -71,11 +73,16 @@ class _LiveLocation extends State<LiveLocation> {
     getUserLocation();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       location = Location();
-      subscription = location.onLocationChanged.listen((clocation) {
-        currentLocation = clocation;
-        showLocation = LatLng(clocation.latitude!, clocation.longitude!);
-        debugPrint("currentLocation$currentLocation");
-      });
+      // subscription = location.onLocationChanged.listen((clocation) {
+      //   currentLocation = clocation;
+      //   showLocation = LatLng(clocation.latitude!, clocation.longitude!);
+      //   debugPrint("currentLocation$currentLocation");
+      // });
+      // location.onLocationChanged.listen((clocation) {
+      //   // currentLocation = clocation;
+      //   showLocation = LatLng(clocation.latitude!, clocation.longitude!);
+      //   // debugPrint("currentLocation$currentLocation");
+      // });
     });
     super.initState();
   }
@@ -106,12 +113,12 @@ class _LiveLocation extends State<LiveLocation> {
               children: [
                 GoogleMap(
                   //Map widget from google_maps_flutter package
-                  onTap: _handleTap,
-                  myLocationEnabled: true,
+                  // onTap: _handleTap,
+                  myLocationEnabled: false,
                   zoomGesturesEnabled: true,
                   //enable Zoom in, out on map
                   initialCameraPosition: initialCameraPosition,
-                  markers: markers,
+                  markers: getmarkers(),
                   //markers to show on map
                   mapType: MapType.normal,
                   //map type
@@ -259,20 +266,59 @@ class _LiveLocation extends State<LiveLocation> {
     );
   }
 
-  _handleTap(LatLng point) {
+  Set<Marker> getmarkers() { //markers to place on map
     setState(() {
-      // currentMarkerLat =
-      // currentMarkerLng =;
-      currentMarkerLatLng = LatLng(point.latitude, point.longitude);
-      markers.add(Marker(
-        markerId: MarkerId(point.toString()),
-        position: point,
-        infoWindow: const InfoWindow(
-          title: 'I am a marker',
+      markers.add(Marker( //add first marker
+        markerId: MarkerId(longitude.toString()),
+        position: LatLng(latitude, longitude), //position of marker
+        infoWindow: InfoWindow( //popup info
+          title: 'User',
+          snippet: "User's current location.",
         ),
-        icon:
-            BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueMagenta),
+        icon: BitmapDescriptor.defaultMarker,
+        //Icon for Marker
       ));
+
+      // markers.add(Marker( //add second marker
+      //   markerId: MarkerId(showLocation.toString()),
+      //   position: LatLng(27.7099116, 85.3132343), //position of marker
+      //   infoWindow: InfoWindow( //popup info
+      //     title: 'Marker Title Second ',
+      //     snippet: 'My Custom Subtitle',
+      //   ),
+      //   icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+      // ));
+
+      // markers.add(Marker( //add third marker
+      //   markerId: MarkerId(showLocation.toString()),
+      //   position: LatLng(27.7137735, 85.315626), //position of marker
+      //   infoWindow: InfoWindow( //popup info
+      //     title: 'Marker Title Third ',
+      //     snippet: 'My Custom Subtitle',
+      //   ),
+      //   icon: BitmapDescriptor.defaultMarker, //Icon for Marker
+      // ));
+
+      //add more markers here
     });
+
+    return markers;
   }
+
+  // _handleTap(LatLng point) {
+  //   setState(() {
+  //     // currentMarkerLat =
+  //     // currentMarkerLng =;
+  //     currentMarkerLatLng = LatLng(point.latitude, point.longitude);
+  //     markers.add(Marker(
+  //       markerId: MarkerId(point.toString()),
+  //       position: point,
+  //       infoWindow: const InfoWindow(
+  //         title: 'I am a marker',
+  //       ),
+  //       icon:
+  //           BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueMagenta),
+  //     ));
+  //   });
+  // }
 }

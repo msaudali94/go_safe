@@ -37,18 +37,19 @@ dependencies:
   cupertino_icons:
   dropdown_button2:
   user_profile_avatar:
-  connectivity:
+  connectivity_plus:
   date_time_format:
   provider:
   dio:
   fluttertoast:
-  firebase:
   firebase_auth:
   firebase_core:
   cloud_firestore:
   firebase_database:
   flutter_contacts:
   fluttercontactpicker:
+  permission_handler:
+  flutter_sms:
   geolocator:
   geocoding:
   location:
