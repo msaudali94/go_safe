@@ -10,6 +10,7 @@ import 'package:go_safe/res/Assets.dart';
 import 'package:go_safe/screens/shareridedetails.dart';
 import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart'hide PermissionStatus;
+import 'package:zego_express_engine/zego_express_engine.dart';
 import 'activatedfakecall.dart';
 import 'generateguardianlist.dart';
 import 'profileuser.dart';
@@ -38,6 +39,14 @@ class _HomeUser extends State<HomeUser> {
   }
 
   void _listenForPermissionStatus() async {
+    ZegoUser user = ZegoUser('abcd', 'ab@gmail.com');
+
+
+    ZegoRoomConfig config = ZegoRoomConfig.defaultConfig();
+
+    config.token = "04AAAAAGMYehMAEGJxdm1sdjg3NXUxbGxleDcAoEsYHy6MemgZZl34bzczvuikjxZvtu+iv8s7WwRe9FMzpA7lvSSzDmaAa1z4/n0pMchwxOS04Z0ME8YtNx32fM4aN2wF8iiLrwRWebHoJuAypUqLEupwPsWK2hyv9pTwJcfxwoDZQZhIJM4695P1ajg1qqtHzCmoG+V5DFLfaXUAkR9L7tIrsFdPkFcRf9kJV8HonBSZSXYyrO09zS4yMfY=";
+
+    ZegoExpressEngine.instance.loginRoom('room1', user, config: config);
     _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
@@ -58,6 +67,15 @@ class _HomeUser extends State<HomeUser> {
     if(await Permission.sms.isGranted ==false)
       {
         await Permission.sms.request();
+      }if(await Permission.phone.isGranted ==false)
+      {
+        await Permission.phone.request();
+      }if(await Permission.microphone.isGranted ==false)
+      {
+        await Permission.microphone.request();
+      }if(await Permission.storage.isGranted ==false)
+      {
+        await Permission.storage.request();
       }
 
     currentLocation = await location.getLocation();
@@ -116,7 +134,7 @@ class _HomeUser extends State<HomeUser> {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white, // Background color
+                            backgroundColor: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(35.0),
@@ -136,7 +154,7 @@ class _HomeUser extends State<HomeUser> {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white, // Background color
+                            backgroundColor: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(35.0),
@@ -187,7 +205,7 @@ class _HomeUser extends State<HomeUser> {
                     children: [
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white, // Background color
+                            backgroundColor: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
                             shape: RoundedRectangleBorder(
                               borderRadius:  BorderRadius.circular(35.0),
@@ -206,7 +224,7 @@ class _HomeUser extends State<HomeUser> {
                       ),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white, // Background color
+                            backgroundColor: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
                             shape:  RoundedRectangleBorder(
                               borderRadius:  BorderRadius.circular(35.0),
@@ -270,31 +288,31 @@ class _HomeUser extends State<HomeUser> {
                         borderRadius: const BorderRadius.all(Radius.circular(100))),
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.deepPurpleAccent,
+                            backgroundColor: Colors.deepPurpleAccent,
                             // Background color
                             minimumSize: const Size(80, 80),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(100.0),
                             )),
                         onPressed: () async {
-                          // GeoData data = await Geocoder2.getDataFromCoordinates(
-                          //     latitude: currentLocation!.latitude!,
-                          //     longitude: currentLocation!.longitude!,
-                          //     googleMapApiKey: kGoogleApiKey);
-                          //
-                          // await FirebaseFirestore.instance
-                          //     .collection('UserLocation')
-                          //     .doc("${FirebaseAuth.instance.currentUser?.email}")
-                          //     .set({
-                          //   "latitude": currentLocation?.latitude,
-                          //   "longitude": currentLocation?.longitude,
-                          //   "locationName":data.address
-                          // });
-                          // await FirebaseFirestore.instance
-                          //     .collection('UserBattery')
-                          //     .doc("${FirebaseAuth.instance.currentUser?.email}")
-                          //     .set({
-                          //   "battery_level": await battery.batteryLevel});
+                          GeoData data = await Geocoder2.getDataFromCoordinates(
+                              latitude: currentLocation!.latitude!,
+                              longitude: currentLocation!.longitude!,
+                              googleMapApiKey: kGoogleApiKey);
+
+                          await FirebaseFirestore.instance
+                              .collection('UserLocation')
+                              .doc("${FirebaseAuth.instance.currentUser?.email}")
+                              .set({
+                            "latitude": currentLocation?.latitude,
+                            "longitude": currentLocation?.longitude,
+                            "locationName":data.address
+                          });
+                          await FirebaseFirestore.instance
+                              .collection('UserBattery')
+                              .doc("${FirebaseAuth.instance.currentUser?.email}")
+                              .set({
+                            "battery_level": await battery.batteryLevel});
                           var documentList = (await FirebaseFirestore.instance
                               .collection("Users")
                               .where("role",isEqualTo: "Guardian")
@@ -305,16 +323,14 @@ class _HomeUser extends State<HomeUser> {
                           List<String> recipents = ["${documentList.docs.first.get("number")}"];
                           _sendSMS(recipents,message );
                           // ZegoUser user = ZegoUser.id('user1');
-                          //
-                          // ZegoRoomConfig config = ZegoRoomConfig.defaultConfig();
-                          //
-                          // config.token = "xxxx";
-                          //
-                          // ZegoExpressEngine.instance.loginRoom('room1', user, config: config);
-                          //
-                          //
-                          //
-                          // ZegoExpressEngine.instance.startPublishingStream("streamID");
+                          ZegoExpressEngine.instance.startPublishingStream("streamID");
+                          // ZegoExpressEngine.instance.startPlayingStream("streamID").whenComplete(() async {
+                          //   await Future.delayed(const Duration(minutes: 1), () {
+                          //     ZegoExpressEngine.instance.stopPublishingStream();
+                          //     ZegoExpressEngine.instance.stopPlayingStream("streamID");
+                          //     ZegoExpressEngine.instance.logoutRoom('room1');
+                          //   });
+                          // });
                         },
                         child: const Text(
                           "SOS",

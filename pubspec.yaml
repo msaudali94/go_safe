@@ -42,9 +42,10 @@ dependencies:
   provider:
   dio:
   fluttertoast:
-  firebase_auth:
-  firebase_core:
+  firebase_auth: ^3.7.0
+  firebase_core: ^1.21.1
   cloud_firestore:
+  zego_express_engine: ^2.22.0
   firebase_database:
   flutter_contacts:
   fluttercontactpicker:
@@ -57,6 +58,7 @@ dependencies:
   flutter_google_places:
   battery_plus:
   flutter_ringtone_player:
+  ffi:
   geocoder2:
   url_launcher:
 

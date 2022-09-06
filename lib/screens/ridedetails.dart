@@ -15,7 +15,7 @@ class RideDetails extends StatefulWidget{
 }
 
 class _RideDetails extends  State<RideDetails> {
-  final key =UniqueKey();
+  final key = GlobalKey();
   // String kGoogleApiKey = "AIzaSyCqGcDZJekuh5y-pUiXZGyWoHEQOZQOe4Q";
   LatLng? currentMarkerLatLng;
   GoogleMapController? controller;
@@ -23,7 +23,7 @@ class _RideDetails extends  State<RideDetails> {
   LatLng? markerPosition;
   String locationName="";
   late double longitude;
-  late double latitude;
+  late double latitude=0.0;
   GoogleMapController? mapController; //contrller for Google map
   final Set<Marker> markers = new Set();
   // late LatLng ? showLocation;
@@ -93,7 +93,7 @@ class _RideDetails extends  State<RideDetails> {
       zoom: 15.89,
       tilt: 40,
       bearing: 20,
-      target: latitude != null
+      target: latitude == 0.0
           ? LatLng(
         latitude,
         longitude,
@@ -155,9 +155,9 @@ class _RideDetails extends  State<RideDetails> {
                                  ),
                                  borderRadius: const BorderRadius.all(Radius.circular(50))
                              ),
-                             child:  Text("$locationName",
+                             child:  Text(locationName,
                                textAlign: TextAlign.center,
-                               style: TextStyle(
+                               style: const TextStyle(
                                  color: Colors.black,
                                  fontSize: 28.0,
                                  fontWeight: FontWeight.w500,
@@ -256,7 +256,7 @@ class _RideDetails extends  State<RideDetails> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => HomeGuardian()));
+                                  builder: (context) => const HomeGuardian()));
                         },
                         icon: const Icon(
                           Icons.home,
@@ -313,7 +313,7 @@ class _RideDetails extends  State<RideDetails> {
       markers.add(Marker( //add first marker
         markerId: MarkerId(longitude.toString()),
         position: LatLng(latitude, longitude), //position of marker
-        infoWindow: InfoWindow( //popup info
+        infoWindow: const InfoWindow( //popup info
           title: 'User',
           snippet: "User's current location.",
         ),

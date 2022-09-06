@@ -29,6 +29,7 @@ class _LiveLocation extends State<LiveLocation> {
   late LocationData destinationLocation;
   late Location location;
   // late StreamSubscription<LocationData> subscription;
+  final key = GlobalKey();
 
   onMapCreated(GoogleMapController controller) {
     debugPrint("longitudemarkers $longitude, latitude $latitude");
@@ -112,6 +113,8 @@ class _LiveLocation extends State<LiveLocation> {
             child: Stack(
               children: [
                 GoogleMap(
+                  key: key,
+
                   //Map widget from google_maps_flutter package
                   // onTap: _handleTap,
                   myLocationEnabled: false,

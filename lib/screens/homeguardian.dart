@@ -18,8 +18,14 @@ class _HomeGuardian extends  State<HomeGuardian> {
 
 
   @override
-  Widget build(BuildContext context){
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
+
+  @override
+  Widget build(BuildContext context){
     return Scaffold(
       body: Container(
           height: MediaQuery.of(context).size.height,
@@ -72,14 +78,14 @@ class _HomeGuardian extends  State<HomeGuardian> {
 
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white, // Background color
+                            backgroundColor: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(35.0),
                             )
                         ),
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => Emergency()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const Emergency()));
 
                         },
 
@@ -121,7 +127,7 @@ class _HomeGuardian extends  State<HomeGuardian> {
 
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Colors.white, // Background color
+                            backgroundColor: Colors.white, // Background color
                             minimumSize: const Size(100, 100),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(35.0),

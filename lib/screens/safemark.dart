@@ -31,6 +31,7 @@ class SafeMark extends StatefulWidget {
 class _SafeMark extends State<SafeMark> {
   String? locationString, lat, lng = "";
   // String kGoogleApiKey = "AIzaSyCqGcDZJekuh5y-pUiXZGyWoHEQOZQOe4Q";
+  final key = GlobalKey();
 
   GoogleMapController? controller;
   MarkerId? selectedMarker;
@@ -111,6 +112,7 @@ class _SafeMark extends State<SafeMark> {
             child: Stack(
               children: [
                 GoogleMap(
+                  key: key,
                   //Map widget from google_maps_flutter package
                   onTap: _handleTap,
                   myLocationEnabled: true,
