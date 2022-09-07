@@ -20,8 +20,8 @@ class _LiveLocation extends State<LiveLocation> {
   MarkerId? selectedMarker;
   LatLng? markerPosition;
   String locationName="";
-  late double longitude;
-  late double latitude;
+  late double longitude=0.0;
+  late double latitude=0.0;
   GoogleMapController? mapController; //contrller for Google map
   final Set<Marker> markers = new Set();
   // late LatLng ? showLocation;
@@ -53,27 +53,20 @@ class _LiveLocation extends State<LiveLocation> {
         .get();
     // final ref = FirebaseDatabase.instance.ref();
     // final snapshot = await ref.child('users/$userId').get();
-    if (ref.exists) {
+    setState(() {
+      if (ref.exists) {
         locationName = "${ref.get("locationName")}";
         longitude=double.parse("${ref.get("longitude")}");
         latitude=double.parse("${ref.get("latitude")}");
-    } else {
-      print('No data available.');
-    }
-    setState(() {
+      } else {
+        print('No data available.');
+      }
+
       debugPrint("locationNameLatitude$latitude");
 
       // showLocation =  LatLng(latitude, longitude);
     });
-  }
-
-  @override
-  void initState() {
-    longitude=35.213212;
-    latitude=73.233112;
-    getUserLocation();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      location = Location();
       // subscription = location.onLocationChanged.listen((clocation) {
       //   currentLocation = clocation;
       //   showLocation = LatLng(clocation.latitude!, clocation.longitude!);
@@ -85,6 +78,12 @@ class _LiveLocation extends State<LiveLocation> {
       //   // debugPrint("currentLocation$currentLocation");
       // });
     });
+
+  }
+
+  @override
+  void initState() {
+    getUserLocation();
     super.initState();
   }
 
@@ -112,7 +111,7 @@ class _LiveLocation extends State<LiveLocation> {
 
             child: Stack(
               children: [
-                GoogleMap(
+                latitude==0.0?Center(child: CircularProgressIndicator(),):GoogleMap(
                   key: key,
 
                   //Map widget from google_maps_flutter package
