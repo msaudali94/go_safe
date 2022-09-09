@@ -1,4 +1,4 @@
-const String kGoogleApiKey = "AIzaSyCaG25OTUqHnWj5B7EC27a8aPKNEyZWeRw";
+const String kGoogleApiKey = "AIzaSyBZoCY93kss7zkXAN9LW2N5__AhcI02GNw";
 
 class Assets
 {

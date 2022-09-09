@@ -4,6 +4,8 @@ import 'package:go_safe/screens/emergency.dart';
 import 'package:go_safe/screens/profileguardian.dart';
 import 'package:go_safe/screens/ridedetails.dart';
 import 'package:go_safe/screens/settingguardian.dart';
+import 'package:location/location.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 
 
@@ -17,11 +19,7 @@ class HomeGuardian extends StatefulWidget{
 class _HomeGuardian extends  State<HomeGuardian> {
 
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+
 
 
   @override
@@ -47,15 +45,18 @@ class _HomeGuardian extends  State<HomeGuardian> {
                   SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
                   Container(
-                    height: 80,
-                    width: 80,
+                    height: MediaQuery.of(context).size.height*0.1,
+                    width: MediaQuery.of(context).size.height*0.1,
+
                     decoration: BoxDecoration(
+                      color: Colors.grey,
                         border: Border.all(
                           color: Colors.white,
                           width: 2,
                         ),
-                        borderRadius: const BorderRadius.all(Radius.circular(60))
+                        borderRadius:  BorderRadius.all(Radius.circular(MediaQuery.of(context).size.height*0.08))
                     ),
+                    child: Icon(Icons.person, size: MediaQuery.of(context).size.height*0.08,),
                     //child: Image
 
                   ),

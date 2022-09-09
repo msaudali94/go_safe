@@ -38,16 +38,20 @@ class _ProfileGuardian extends  State<ProfileGuardian> {
                   SizedBox(height: MediaQuery.of(context).size.height*0.08,),
 
                   Container(
-                    height: 80,
-                    width: 80,
+                    height: MediaQuery.of(context).size.height*0.1,
+                    width: MediaQuery.of(context).size.height*0.1,
+
                     decoration: BoxDecoration(
+                        color: Colors.grey,
                         border: Border.all(
                           color: Colors.white,
                           width: 2,
                         ),
-                        borderRadius: const BorderRadius.all(const Radius.circular(60))
+                        borderRadius:  BorderRadius.all(Radius.circular(MediaQuery.of(context).size.height*0.08))
                     ),
+                    child: Icon(Icons.person, size: MediaQuery.of(context).size.height*0.08,),
                     //child: Image
+
                   ),
 
 

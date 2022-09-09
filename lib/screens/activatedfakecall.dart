@@ -134,6 +134,13 @@ class _FakeCallOne extends  State<FakeCallOne> {
                           borderRadius: const BorderRadius.all(Radius.circular(120))
                       ),
                       child:   IconButton(onPressed: (){
+                        FlutterRingtonePlayer.play(
+                          android: AndroidSounds.ringtone,
+                          ios: IosSounds.glass,
+                          looping: true, // Android only - API >= 28
+                          volume: 0.9, // Android only - API >= 28
+                          asAlarm: false, // Android only - all APIs
+                        );
 
                         Navigator.push(context, MaterialPageRoute(builder: (context) => const FakeCallTwo()));
 
@@ -184,9 +191,5 @@ class _FakeCallOne extends  State<FakeCallOne> {
 
     );
   }
-  @override
-  void dispose() {
-    FlutterRingtonePlayer.stop();
-    super.dispose();
-  }
+
 }

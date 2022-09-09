@@ -28,7 +28,7 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
         location.onLocationChanged.listen((clocation) {
           currentLocation = clocation;
           print("currentLocation$currentLocation");
-          sendLatLongToFirebase(location: "UserLocation");
+          // sendLatLongToFirebase(location: "UserLocation");
         });
     super.initState();
   }
@@ -254,15 +254,15 @@ class _ShareRideDetails extends  State<ShareRideDetails> {
 
 
 
-  Future<void> sendLatLongToFirebase({required location}) async {
-    await FirebaseFirestore.instance
-        .collection('$location')
-        .doc("${FirebaseAuth.instance.currentUser?.email}")
-        .set({
-      "latitude": currentLocation?.latitude,
-      "longitude": currentLocation?.longitude,
-      // "name": "${FirebaseAuth.instance.currentUser?.displayName}"
-    });
-  }
+  // Future<void> sendLatLongToFirebase({required location}) async {
+  //   await FirebaseFirestore.instance
+  //       .collection('$location')
+  //       .doc("${FirebaseAuth.instance.currentUser?.email}")
+  //       .set({
+  //     "latitude": currentLocation?.latitude,
+  //     "longitude": currentLocation?.longitude,
+  //     // "name": "${FirebaseAuth.instance.currentUser?.displayName}"
+  //   });
+  // }
 
 }

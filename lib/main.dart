@@ -6,7 +6,6 @@ import 'package:go_safe/auth_screens/signin.dart';
 import 'package:go_safe/providers/multi_provider.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:zego_express_engine/zego_express_engine.dart';
 import 'screens/homeuser.dart';
 
 
@@ -16,13 +15,13 @@ Future<void> main() async {
   if (defaultTargetPlatform == TargetPlatform.android) {
     AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
   }
-  ZegoEngineProfile profile = ZegoEngineProfile(
-         1753447542, // AppID format: 1234567890
-         ZegoScenario.General, // General scenario
-
-  );
-
-  ZegoExpressEngine.createEngineWithProfile(profile);
+  // ZegoEngineProfile profile = ZegoEngineProfile(
+  //        1753447542, // AppID format: 1234567890
+  //        ZegoScenario.General, // General scenario
+  //
+  // );
+  //
+  // ZegoExpressEngine.createEngineWithProfile(profile);
   runApp(const MyApp());
 }
 
@@ -35,7 +34,8 @@ class MyApp extends StatelessWidget {
     return  MultiProvider(
       providers: multiProviders,
       child: const MaterialApp(
-        title:"Go Safe",
+          debugShowCheckedModeBanner: false,
+          title:"Go Safe",
         home: AuthenticationWrapper()
         ),
     );

@@ -3,14 +3,12 @@ import 'package:battery_plus/battery_plus.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:flutter_sms/flutter_sms.dart';
 import 'package:geocoder2/geocoder2.dart';
 import 'package:go_safe/res/Assets.dart';
 import 'package:go_safe/screens/shareridedetails.dart';
 import 'package:location/location.dart';
 import 'package:permission_handler/permission_handler.dart'hide PermissionStatus;
-import 'package:zego_express_engine/zego_express_engine.dart';
 import 'activatedfakecall.dart';
 import 'generateguardianlist.dart';
 import 'profileuser.dart';
@@ -39,14 +37,14 @@ class _HomeUser extends State<HomeUser> {
   }
 
   void _listenForPermissionStatus() async {
-    ZegoUser user = ZegoUser('abcd', 'ab@gmail.com');
-
-
-    ZegoRoomConfig config = ZegoRoomConfig.defaultConfig();
-
-    config.token = "04AAAAAGMYehMAEGJxdm1sdjg3NXUxbGxleDcAoEsYHy6MemgZZl34bzczvuikjxZvtu+iv8s7WwRe9FMzpA7lvSSzDmaAa1z4/n0pMchwxOS04Z0ME8YtNx32fM4aN2wF8iiLrwRWebHoJuAypUqLEupwPsWK2hyv9pTwJcfxwoDZQZhIJM4695P1ajg1qqtHzCmoG+V5DFLfaXUAkR9L7tIrsFdPkFcRf9kJV8HonBSZSXYyrO09zS4yMfY=";
-
-    ZegoExpressEngine.instance.loginRoom('room1', user, config: config);
+    // ZegoUser user = ZegoUser('abcd', 'ab@gmail.com');
+    //
+    //
+    // ZegoRoomConfig config = ZegoRoomConfig.defaultConfig();
+    //
+    // config.token = "04AAAAAGMYehMAEGJxdm1sdjg3NXUxbGxleDcAoEsYHy6MemgZZl34bzczvuikjxZvtu+iv8s7WwRe9FMzpA7lvSSzDmaAa1z4/n0pMchwxOS04Z0ME8YtNx32fM4aN2wF8iiLrwRWebHoJuAypUqLEupwPsWK2hyv9pTwJcfxwoDZQZhIJM4695P1ajg1qqtHzCmoG+V5DFLfaXUAkR9L7tIrsFdPkFcRf9kJV8HonBSZSXYyrO09zS4yMfY=";
+    //
+    // ZegoExpressEngine.instance.loginRoom('room1', user, config: config);
     _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
@@ -105,15 +103,20 @@ class _HomeUser extends State<HomeUser> {
                     height: MediaQuery.of(context).size.height * 0.08,
                   ),
                   Container(
-                    height: 80,
-                    width: 80,
+                    height: MediaQuery.of(context).size.height*0.1,
+                    width: MediaQuery.of(context).size.height*0.1,
+
                     decoration: BoxDecoration(
+                        color: Colors.grey,
                         border: Border.all(
                           color: Colors.white,
                           width: 2,
                         ),
-                        borderRadius: const BorderRadius.all(Radius.circular(60))),
+                        borderRadius:  BorderRadius.all(Radius.circular(MediaQuery.of(context).size.height*0.08))
+                    ),
+                    child: Icon(Icons.person, size: MediaQuery.of(context).size.height*0.08,),
                     //child: Image
+
                   ),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.01,
@@ -230,13 +233,7 @@ class _HomeUser extends State<HomeUser> {
                               borderRadius:  BorderRadius.circular(35.0),
                             )),
                         onPressed: () {
-                          FlutterRingtonePlayer.play(
-                            android: AndroidSounds.ringtone,
-                            ios: IosSounds.glass,
-                            looping: true, // Android only - API >= 28
-                            volume: 0.9, // Android only - API >= 28
-                            asAlarm: false, // Android only - all APIs
-                          );
+
                           Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -322,8 +319,17 @@ class _HomeUser extends State<HomeUser> {
                           String message = "Latitude: ${currentLocation?.latitude}, Longitude: ${currentLocation?.longitude}";
                           List<String> recipents = ["${documentList.docs.first.get("number")}"];
                           _sendSMS(recipents,message );
+                          // ZegoExpressEngine.instance.startPublishingStream("streamID");
+                          setState(() {
+
+                          });
+
+
+
+
+
                           // ZegoUser user = ZegoUser.id('user1');
-                          ZegoExpressEngine.instance.startPublishingStream("streamID");
+                          // ZegoExpressEngine.instance.startPublishingStream("streamID");
                           // ZegoExpressEngine.instance.startPlayingStream("streamID").whenComplete(() async {
                           //   await Future.delayed(const Duration(minutes: 1), () {
                           //     ZegoExpressEngine.instance.stopPublishingStream();

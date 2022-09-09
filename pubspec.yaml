@@ -41,11 +41,12 @@ dependencies:
   date_time_format:
   provider:
   dio:
+  google_api_headers:
   fluttertoast:
   firebase_auth: ^3.7.0
   firebase_core: ^1.21.1
   cloud_firestore:
-  zego_express_engine: ^2.22.0
+#  zego_express_engine: ^2.22.0
   firebase_database:
   flutter_contacts:
   fluttercontactpicker:

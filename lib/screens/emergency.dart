@@ -6,7 +6,6 @@ import 'package:go_safe/screens/livelocation.dart';
 import 'package:go_safe/screens/profileguardian.dart';
 import 'package:go_safe/screens/settingguardian.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:zego_express_engine/zego_express_engine.dart';
 
 
 class Emergency extends StatefulWidget{
@@ -21,14 +20,14 @@ class _Emergency extends  State<Emergency> {
 
   @override
   void initState() {
-    ZegoUser user = ZegoUser('abcd', 'ab@gmail.com');
-
-
-    ZegoRoomConfig config = ZegoRoomConfig.defaultConfig();
-
-    config.token = "04AAAAAGMYehMAEGJxdm1sdjg3NXUxbGxleDcAoEsYHy6MemgZZl34bzczvuikjxZvtu+iv8s7WwRe9FMzpA7lvSSzDmaAa1z4/n0pMchwxOS04Z0ME8YtNx32fM4aN2wF8iiLrwRWebHoJuAypUqLEupwPsWK2hyv9pTwJcfxwoDZQZhIJM4695P1ajg1qqtHzCmoG+V5DFLfaXUAkR9L7tIrsFdPkFcRf9kJV8HonBSZSXYyrO09zS4yMfY=";
-
-    ZegoExpressEngine.instance.loginRoom('room1', user, config: config);
+    // ZegoUser user = ZegoUser('abcd', 'ab@gmail.com');
+    //
+    //
+    // ZegoRoomConfig config = ZegoRoomConfig.defaultConfig();
+    //
+    // config.token = "04AAAAAGMYehMAEGJxdm1sdjg3NXUxbGxleDcAoEsYHy6MemgZZl34bzczvuikjxZvtu+iv8s7WwRe9FMzpA7lvSSzDmaAa1z4/n0pMchwxOS04Z0ME8YtNx32fM4aN2wF8iiLrwRWebHoJuAypUqLEupwPsWK2hyv9pTwJcfxwoDZQZhIJM4695P1ajg1qqtHzCmoG+V5DFLfaXUAkR9L7tIrsFdPkFcRf9kJV8HonBSZSXYyrO09zS4yMfY=";
+    //
+    // ZegoExpressEngine.instance.loginRoom('room1', user, config: config);
     super.initState();
   }
 
@@ -109,13 +108,13 @@ class _Emergency extends  State<Emergency> {
                             )
                         ),
                         onPressed: () {
-                          ZegoExpressEngine.instance.startPlayingStream("streamID").whenComplete(() async {
-                            await Future.delayed(const Duration(minutes: 1), () {
-                              ZegoExpressEngine.instance.stopPublishingStream();
-                              ZegoExpressEngine.instance.stopPlayingStream("streamID");
-                              ZegoExpressEngine.instance.logoutRoom('room1');
-                            });
-                          });
+                          // ZegoExpressEngine.instance.startPlayingStream("streamID").whenComplete(() async {
+                          //   await Future.delayed(const Duration(minutes: 1), () {
+                          //     ZegoExpressEngine.instance.stopPublishingStream();
+                          //     ZegoExpressEngine.instance.stopPlayingStream("streamID");
+                          //     ZegoExpressEngine.instance.logoutRoom('room1');
+                          //   });
+                          // });
                         },
 
                         child: const Icon(Icons.volume_up,
